@@ -68,6 +68,9 @@
     <string name="security_scanner_btn_scan">Scan APK</string>
     <string name="security_scanner_scanning">Scanning APK…</string>
     <string name="security_scanner_section_signing">Signing Info</string>
+    <string name="security_scanner_section_manifest">Manifest Security</string>
+    <string name="security_scanner_section_sdks">Detected Third-Party SDKs</string>
+    <string name="security_scanner_section_native">Native Library Hardening</string>
     <string name="security_scanner_section_permissions">Dangerous Permissions</string>
     <string name="security_scanner_section_secrets">Possible Hardcoded Secrets</string>
     <string name="security_scanner_section_network">URLs &amp; IP Addresses</string>
@@ -76,6 +79,16 @@
     <string name="security_scanner_disclaimer">Heuristic pattern-matching — not a definitive security verdict. False positives/negatives possible.</string>
     <string name="security_scanner_btn_export">Export Report</string>
     <string name="security_scanner_export_success">Report saved: %1$s</string>
+
+    <!-- Compare / Diff APK -->
+    <string name="apk_diff_title">Compare APK</string>
+    <string name="subtitle_apk_diff">Compare two APKs: permissions, cert, SDKs</string>
+    <string name="apk_diff_subtitle">Compare two APKs: permissions, signing, SDKs, native libs</string>
+    <string name="apk_diff_pick_a">APK A (old/original)</string>
+    <string name="apk_diff_pick_b">APK B (new/patched)</string>
+    <string name="apk_diff_btn_compare">Compare</string>
+    <string name="apk_diff_comparing">Comparing APKs…</string>
+    <string name="apk_diff_result_title">Diff Result</string>
 
     <!-- Categories -->
     <string name="category_network">Network &amp; Connectivity</string>

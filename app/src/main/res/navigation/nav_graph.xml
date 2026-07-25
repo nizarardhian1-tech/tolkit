@@ -28,6 +28,7 @@
         <!-- ACTION KE APK SIGNER -->
         <action android:id="@+id/action_home_to_apkSigner" app:destination="@id/apkSignerFragment"  app:enterAnim="@anim/nav_enter" app:exitAnim="@anim/nav_exit" app:popEnterAnim="@anim/nav_pop_enter" app:popExitAnim="@anim/nav_pop_exit" />
         <action android:id="@+id/action_home_to_securityScanner" app:destination="@id/securityScannerFragment"  app:enterAnim="@anim/nav_enter" app:exitAnim="@anim/nav_exit" app:popEnterAnim="@anim/nav_pop_enter" app:popExitAnim="@anim/nav_pop_exit" />
+        <action android:id="@+id/action_home_to_apkDiff" app:destination="@id/apkDiffFragment"  app:enterAnim="@anim/nav_enter" app:exitAnim="@anim/nav_exit" app:popEnterAnim="@anim/nav_pop_enter" app:popExitAnim="@anim/nav_pop_exit" />
     </fragment>
 
     <!-- Fitur-fiturnya -->
@@ -69,5 +70,6 @@
     <!-- APK SIGNER: generate keystore (PKCS12) + sign APK pakai apksig -->
     <fragment android:id="@+id/apkSignerFragment" android:name="com.mondns.app.ApkSignerFragment" android:label="@string/apk_signer_title" tools:layout="@layout/fragment_apk_signer" />
     <fragment android:id="@+id/securityScannerFragment" android:name="com.mondns.app.SecurityScannerFragment" android:label="@string/security_scanner_title" tools:layout="@layout/fragment_security_scanner" />
+    <fragment android:id="@+id/apkDiffFragment" android:name="com.mondns.app.ApkDiffFragment" android:label="@string/apk_diff_title" tools:layout="@layout/fragment_apk_diff" />
 
 </navigation>

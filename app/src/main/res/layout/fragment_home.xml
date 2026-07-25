@@ -633,6 +633,53 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Card Compare APK -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardApkDiff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="22dp"
+            app:cardBackgroundColor="@color/glass_surface_container"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/glass_stroke"
+            android:clickable="true"
+            android:focusable="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="14dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/img_apk_diff"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/apk_diff_title"
+                        android:textSize="14.5sp"
+                        android:textColor="?attr/colorOnSurface"
+                        android:fontFamily="@font/font_inter_semibold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/subtitle_apk_diff"
+                        android:textSize="11sp"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
         <!-- =================================================================== -->
         <!-- BENTO 5: NETWORK & MISC TOOLS (2-COLUMN GRID)                     -->
         <!-- =================================================================== -->

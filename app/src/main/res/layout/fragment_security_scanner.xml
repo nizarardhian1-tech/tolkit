@@ -161,6 +161,39 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Manifest Security -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/security_scanner_section_manifest"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/font_inter_semibold"
+                        android:textColor="?attr/colorPrimary"/>
+                    <TextView
+                        android:id="@+id/tvManifest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="monospace"
+                        android:textSize="11.5sp"
+                        android:textIsSelectable="true"
+                        android:textColor="?attr/colorOnSurface"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
             <!-- Dangerous Permissions -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -286,6 +319,71 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:textSize="12sp"
+                        android:textIsSelectable="true"
+                        android:textColor="?attr/colorOnSurface"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Detected SDKs -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/security_scanner_section_sdks"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/font_inter_semibold"
+                        android:textColor="?attr/colorPrimary"/>
+                    <TextView
+                        android:id="@+id/tvSdks"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textSize="12sp"
+                        android:textIsSelectable="true"
+                        android:textColor="?attr/colorOnSurface"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Native Library Hardening -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/security_scanner_section_native"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/font_inter_semibold"
+                        android:textColor="?attr/colorPrimary"/>
+                    <TextView
+                        android:id="@+id/tvNativeLibs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="monospace"
+                        android:textSize="11sp"
                         android:textIsSelectable="true"
                         android:textColor="?attr/colorOnSurface"/>
                 </LinearLayout>

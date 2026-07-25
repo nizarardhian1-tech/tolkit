@@ -198,6 +198,33 @@ class SecurityScannerFragment : Fragment() {
             }.trim()
         }
 
+        // --- Manifest Security ---
+        val manifest = report.manifest
+        binding.tvManifest.text = when {
+            manifest == null -> "Gagal baca AndroidManifest.xml."
+            manifest.parseError != null -> "Gagal parse manifest: ${manifest.parseError}"
+            else -> buildString {
+                if (manifest.packageName != null) append("Package: ${manifest.packageName}\n")
+                if (manifest.versionName != null || manifest.versionCode != null) {
+                    append("Version: ${manifest.versionName ?: "?"} (code ${manifest.versionCode ?: "?"})\n")
+                }
+                if (manifest.minSdkVersion != null || manifest.targetSdkVersion != null) {
+                    append("SDK: min=${manifest.minSdkVersion ?: "?"}, target=${manifest.targetSdkVersion ?: "?"}\n")
+                }
+                append('\n')
+                append(if (manifest.debuggable == true) "🔴 debuggable=true (JANGAN dirilis kayak gini!)\n" else "✅ debuggable=false/tidak diset\n")
+                append(if (manifest.allowBackup == true) "⚠️ allowBackup=true (data bisa ditarik via adb backup)\n" else "✅ allowBackup=false/tidak diset\n")
+                if (manifest.usesCleartextTraffic == true) append("⚠️ usesCleartextTraffic=true (trafik HTTP polos diizinkan)\n")
+                if (manifest.hasNetworkSecurityConfig) append("ℹ️ Punya Network Security Config kustom\n")
+                if (manifest.exportedWithoutPermission.isNotEmpty()) {
+                    append("\n⚠️ Exported TANPA permission (${manifest.exportedWithoutPermission.size}):\n")
+                    manifest.exportedWithoutPermission.take(30).forEach { append("  • $it\n") }
+                } else {
+                    append("\n✅ Nggak ada component exported tanpa permission\n")
+                }
+            }.trim()
+        }
+
         // --- Dangerous Permissions ---
         binding.tvPermissions.text = if (report.dangerousPermissions.isEmpty()) {
             getString(R.string.security_scanner_none_found) + " (dari ${report.allPermissions.size} total permission)"
@@ -229,6 +256,28 @@ class SecurityScannerFragment : Fragment() {
         } else {
             report.weakCrypto.joinToString("\n") { "⚠️ ${it.category} (di: ${it.source})" }
         }
+
+        // --- Detected SDKs ---
+        binding.tvSdks.text = if (report.detectedSdks.isEmpty()) {
+            getString(R.string.security_scanner_none_found)
+        } else {
+            report.detectedSdks.joinToString("\n") { "• $it" }
+        }
+
+        // --- Native Library Hardening ---
+        binding.tvNativeLibs.text = if (report.nativeLibs.isEmpty()) {
+            "Nggak ada native library (.so) di APK ini."
+        } else {
+            report.nativeLibs.joinToString("\n\n") { lib ->
+                buildString {
+                    append("${lib.fileName} (${lib.architecture})\n")
+                    append("  Canary: ${if (lib.hasStackCanary) "✅" else "❌"}  ")
+                    append("FORTIFY: ${if (lib.hasFortify) "✅" else "❌"}  ")
+                    append("NX: ${when (lib.hasNxStack) { true -> "✅"; false -> "❌"; null -> "?" }}\n")
+                    append("  RELRO: ${lib.relro}  Stripped: ${if (lib.isStripped) "ya" else "tidak"}")
+                }
+            }
+        }
     }
 
     // ==================== Export ====================
@@ -250,10 +299,13 @@ class SecurityScannerFragment : Fragment() {
                     w.write("APK: ${report.apkName}\n")
                     w.write("=".repeat(50) + "\n\n")
                     w.write("[Signing Info]\n${binding.tvSigningInfo.text}\n\n")
+                    w.write("[Manifest Security]\n${binding.tvManifest.text}\n\n")
                     w.write("[Dangerous Permissions]\n${binding.tvPermissions.text}\n\n")
                     w.write("[Possible Hardcoded Secrets]\n${binding.tvSecrets.text}\n\n")
                     w.write("[URLs & IP Addresses]\n${binding.tvNetwork.text}\n\n")
                     w.write("[Weak Crypto Indicators]\n${binding.tvCrypto.text}\n\n")
+                    w.write("[Detected Third-Party SDKs]\n${binding.tvSdks.text}\n\n")
+                    w.write("[Native Library Hardening]\n${binding.tvNativeLibs.text}\n\n")
                     w.write(getString(R.string.security_scanner_disclaimer) + "\n")
                 }
 

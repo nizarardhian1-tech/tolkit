@@ -71,6 +71,9 @@ class HomeFragment : Fragment() {
         binding.cardSecurityScanner.setOnClickListener {
             findNavController().navigate(R.id.action_home_to_securityScanner)
         }
+        binding.cardApkDiff.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_apkDiff)
+        }
 
         // Micro-interaction: Efek membal saat kartu ditekan
         listOf(
@@ -85,7 +88,8 @@ class HomeFragment : Fragment() {
             binding.cardHtmlRunner,
             binding.cardMlbb,
             binding.cardApkSigner,
-            binding.cardSecurityScanner
+            binding.cardSecurityScanner,
+            binding.cardApkDiff
         ).forEach { it.applyPressFeedback() }
 
         // Animasi cascade hanya saat pertama kali dibuka

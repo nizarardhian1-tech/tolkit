@@ -6,16 +6,6 @@ plugins {
 }
 
 android {
-    signingConfigs {
-        release {
-            def sp = System.getenv('SIGNING_KEY_PATH')
-            storeFile sp ? file(sp) : null
-            storePassword System.getenv('SIGNING_STORE_PASS') ?: ''
-            keyAlias System.getenv('SIGNING_ALIAS') ?: ''
-            keyPassword System.getenv('SIGNING_KEY_PASS') ?: ''
-        }
-    }
-
     namespace 'com.mondns.app'
     compileSdk 34
 

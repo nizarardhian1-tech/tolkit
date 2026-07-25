@@ -531,6 +531,7 @@ object XpatchEngine {
 
         val property = ModificationProperty()
 
+        // 1. Injeksi Stub Factory LSPatch
         property.addApplicationAttribute(
             AttributeItem(
                 "appComponentFactory",
@@ -538,6 +539,18 @@ object XpatchEngine {
             )
         )
 
+        // 2. Paksa ekstrak native libs
+        property.addApplicationAttribute(AttributeItem("extractNativeLibs", true))
+
+        // 3. Matikan syarat Split APK (AAB) dari Google Play
+        property.addManifestAttribute(AttributeItem("isSplitRequired", false))
+        property.addManifestAttribute(AttributeItem("requiredSplitTypes", ""))
+        property.addManifestAttribute(AttributeItem("splitTypes", ""))
+        property.addManifestAttribute(AttributeItem("isolatedSplits", false))
+
+        // 🟢 TAMBAHKAN IZIN OVERLAY & QUERY PACKAGES DI SINI
+        property.addUsesPermission("android.permission.SYSTEM_ALERT_WINDOW")
+        property.addUsesPermission("android.permission.ACTION_MANAGE_OVERLAY_PERMISSION")
         property.addUsesPermission("android.permission.QUERY_ALL_PACKAGES")
 
         if (overrideVersionCode != null) {

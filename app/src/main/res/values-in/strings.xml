@@ -68,6 +68,9 @@
     <string name="security_scanner_btn_scan">Scan APK</string>
     <string name="security_scanner_scanning">Nge-scan APK…</string>
     <string name="security_scanner_section_signing">Info Signing</string>
+    <string name="security_scanner_section_manifest">Keamanan Manifest</string>
+    <string name="security_scanner_section_sdks">SDK Pihak Ketiga Terdeteksi</string>
+    <string name="security_scanner_section_native">Native Library Hardening</string>
     <string name="security_scanner_section_permissions">Permission Berbahaya</string>
     <string name="security_scanner_section_secrets">Kemungkinan Hardcoded Secret</string>
     <string name="security_scanner_section_network">URL &amp; IP Address</string>
@@ -76,6 +79,16 @@
     <string name="security_scanner_disclaimer">Ini heuristik pattern-matching — bukan vonis keamanan mutlak. False positive/negative tetap mungkin.</string>
     <string name="security_scanner_btn_export">Export Laporan</string>
     <string name="security_scanner_export_success">Laporan tersimpan: %1$s</string>
+
+    <!-- Compare / Diff APK -->
+    <string name="apk_diff_title">Compare APK</string>
+    <string name="subtitle_apk_diff">Bandingin 2 APK: permission, cert, SDK</string>
+    <string name="apk_diff_subtitle">Bandingin 2 APK: permission, signing, SDK, native lib</string>
+    <string name="apk_diff_pick_a">APK A (lama/original)</string>
+    <string name="apk_diff_pick_b">APK B (baru/hasil patch)</string>
+    <string name="apk_diff_btn_compare">Bandingkan</string>
+    <string name="apk_diff_comparing">Lagi bandingin APK…</string>
+    <string name="apk_diff_result_title">Hasil Perbandingan</string>
 
     <!-- Categories -->
     <string name="category_network">Jaringan &amp; Konektivitas</string>

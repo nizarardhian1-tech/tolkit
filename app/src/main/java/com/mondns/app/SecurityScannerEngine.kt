@@ -36,15 +36,42 @@ object SecurityScannerEngine {
         val errors: List<String>
     )
 
+    data class ManifestSecurityInfo(
+        val packageName: String?,
+        val versionCode: String?,
+        val versionName: String?,
+        val debuggable: Boolean?,
+        val allowBackup: Boolean?,
+        val usesCleartextTraffic: Boolean?,
+        val hasNetworkSecurityConfig: Boolean,
+        val minSdkVersion: String?,
+        val targetSdkVersion: String?,
+        val exportedWithoutPermission: List<String>,
+        val parseError: String?
+    )
+
+    data class NativeLibReport(
+        val fileName: String,
+        val architecture: String,
+        val hasStackCanary: Boolean,
+        val hasFortify: Boolean,
+        val hasNxStack: Boolean?,
+        val relro: String,
+        val isStripped: Boolean
+    )
+
     data class ScanReport(
         val apkName: String,
         val signing: SigningInfo?,
+        val manifest: ManifestSecurityInfo?,
         val allPermissions: List<String>,
         val dangerousPermissions: List<String>,
         val secrets: List<Finding>,
         val urls: List<String>,
         val ipAddresses: List<String>,
-        val weakCrypto: List<Finding>
+        val weakCrypto: List<Finding>,
+        val detectedSdks: List<String>,
+        val nativeLibs: List<NativeLibReport>
     )
 
     // Cap per kategori biar UI & memori nggak jebol buat APK gede yang banyak match-nya.
@@ -83,6 +110,42 @@ object SecurityScannerEngine {
     private val IP_REGEX = Regex("\\b(?:(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)\\b")
     private val PERMISSION_REGEX = Regex("android\\.permission\\.[A-Z_]+")
 
+    // Prefix package -> nama SDK yang enak dibaca. Dicek dengan cara nyari literal string
+    // "Lcom/google/firebase/..." dkk di dex (format JVM internal pakai '/' bukan '.', jadi
+    // regex-nya sengaja pakai '/' — beda dari URL_REGEX/PERMISSION_REGEX yang baca teks biasa).
+    private val KNOWN_SDK_PREFIXES = listOf(
+        "com/google/firebase" to "Firebase",
+        "com/google/android/gms" to "Google Play Services",
+        "com/facebook" to "Facebook SDK",
+        "com/unity3d" to "Unity Engine",
+        "com/google/ads" to "Google Ads",
+        "com/google/android/gms/ads" to "Google AdMob",
+        "com/applovin" to "AppLovin",
+        "com/ironsource" to "IronSource",
+        "com/mopub" to "MoPub",
+        "com/vungle" to "Vungle",
+        "com/chartboost" to "Chartboost",
+        "com/adjust/sdk" to "Adjust (attribution tracker)",
+        "com/appsflyer" to "AppsFlyer (attribution tracker)",
+        "com/flurry" to "Flurry Analytics",
+        "com/crashlytics" to "Crashlytics",
+        "com/bugsnag" to "Bugsnag",
+        "com/squareup/okhttp" to "OkHttp",
+        "retrofit2" to "Retrofit",
+        "com/squareup/picasso" to "Picasso",
+        "com/bumptech/glide" to "Glide",
+        "org/greenrobot/eventbus" to "EventBus",
+        "com/tencent" to "Tencent SDK (mis. Bugly/MTA)",
+        "com/umeng" to "Umeng Analytics",
+        "com/alipay" to "Alipay SDK",
+        "com/xiaomi" to "Xiaomi Push/SDK",
+        "com/huawei/hms" to "Huawei Mobile Services",
+        "io/branch" to "Branch.io",
+        "com/onesignal" to "OneSignal Push",
+        "com/urbanairship" to "Airship (push)",
+        "com/stripe" to "Stripe SDK"
+    )
+
     fun scan(apkFile: File): ScanReport {
         val signing = try { readSigningInfo(apkFile) } catch (e: Exception) { null }
 
@@ -91,22 +154,46 @@ object SecurityScannerEngine {
         val urlHits = mutableSetOf<String>()
         val ipHits = mutableSetOf<String>()
         val cryptoHits = mutableListOf<Finding>()
+        val sdkHits = mutableSetOf<String>()
+        val nativeLibs = mutableListOf<NativeLibReport>()
+        var manifestInfo: ManifestSecurityInfo? = null
 
         ZipFile(apkFile).use { zip ->
             val entries = zip.entries().toList()
 
-            // 1) Manifest: cuma buat narik daftar permission (string "android.permission.X"
-            //    tersimpan apa adanya di string pool AXML, jadi cukup di-scan mentah).
+            // 1) Manifest: dua lapis analisis atas file yang sama.
             entries.find { it.name == "AndroidManifest.xml" }?.let { entry ->
-                val text = extractPrintableStrings(zip.getInputStream(entry).readBytes())
+                val rawBytes = zip.getInputStream(entry).readBytes()
+
+                // 1a) Raw string scan — cukup buat daftar nama permission (selalu plain string di pool).
+                val text = extractPrintableStrings(rawBytes)
                 PERMISSION_REGEX.findAll(text).forEach { allPermissions.add(it.value.substringAfterLast('.')) }
+
+                // 1b) Parse AXML beneran — buat baca ATRIBUT (debuggable/allowBackup/exported/dst)
+                //     yang nilainya typed binary, gak bisa ditangkap raw string scan.
+                manifestInfo = try {
+                    analyzeManifest(rawBytes)
+                } catch (e: Exception) {
+                    ManifestSecurityInfo(
+                        packageName = null, versionCode = null, versionName = null,
+                        debuggable = null, allowBackup = null,
+                        usesCleartextTraffic = null, hasNetworkSecurityConfig = false,
+                        minSdkVersion = null, targetSdkVersion = null,
+                        exportedWithoutPermission = emptyList(),
+                        parseError = e.message ?: "Gagal parse manifest"
+                    )
+                }
             }
 
-            // 2) classes*.dex: sumber utama buat secret, URL, IP, dan nama algoritma crypto,
-            //    karena semua literal string di kode Java/Kotlin disimpan di sini.
+            // 2) classes*.dex: sumber utama buat secret, URL, IP, nama algoritma crypto, dan
+            //    deteksi SDK pihak ketiga (semua literal string & referensi package ada di sini).
             entries.filter { it.name.matches(Regex("classes\\d*\\.dex")) }.forEach { entry ->
-                val text = extractPrintableStrings(zip.getInputStream(entry).readBytes())
+                val bytes = zip.getInputStream(entry).readBytes()
+                val text = extractPrintableStrings(bytes)
                 scanText(text, "classes.dex", secretHits, urlHits, ipHits, cryptoHits)
+                for ((prefix, label) in KNOWN_SDK_PREFIXES) {
+                    if (text.contains(prefix)) sdkHits.add(label)
+                }
             }
 
             // 3) Bonus: file config/text kecil yang mungkin kebawa ke assets/res (misal
@@ -119,6 +206,33 @@ object SecurityScannerEngine {
                 val text = String(bytes, Charsets.UTF_8)
                 scanText(text, entry.name, secretHits, urlHits, ipHits, cryptoHits)
             }
+
+            // 4) Native libs (lib/**/*.so): reuse ElfParser yang sudah ada buat baca hardening
+            //    flag (stack canary, FORTIFY, NX stack, RELRO). Tiap .so diekstrak ke file
+            //    sementara dulu karena ElfParser butuh RandomAccessFile (gak baca dari stream zip).
+            entries.filter { it.name.startsWith("lib/") && it.name.endsWith(".so") }.forEach { entry ->
+                try {
+                    val tmp = File.createTempFile("scan_", "_${entry.name.substringAfterLast('/')}")
+                    tmp.outputStream().use { out -> zip.getInputStream(entry).copyTo(out) }
+                    val info = ElfParser.parse(tmp)
+                    tmp.delete()
+                    if (info.isValid) {
+                        nativeLibs.add(
+                            NativeLibReport(
+                                fileName = entry.name.substringAfterLast('/'),
+                                architecture = info.architecture,
+                                hasStackCanary = info.hasStackCanary,
+                                hasFortify = info.hasFortify,
+                                hasNxStack = info.hasNxStack,
+                                relro = info.relro,
+                                isStripped = info.isStripped
+                            )
+                        )
+                    }
+                } catch (e: Exception) {
+                    // Satu .so gagal diparse (korup/format aneh) — jangan gagalin seluruh scan.
+                }
+            }
         }
 
         val dangerous = allPermissions.filter { it in DANGEROUS_PERMISSIONS }.sorted()
@@ -126,12 +240,63 @@ object SecurityScannerEngine {
         return ScanReport(
             apkName = apkFile.name,
             signing = signing,
+            manifest = manifestInfo,
             allPermissions = allPermissions.sorted(),
             dangerousPermissions = dangerous,
             secrets = secretHits.distinctBy { it.category to it.value }.take(MAX_FINDINGS_PER_CATEGORY),
             urls = urlHits.sorted().take(MAX_FINDINGS_PER_CATEGORY),
             ipAddresses = ipHits.sorted().take(MAX_FINDINGS_PER_CATEGORY),
-            weakCrypto = cryptoHits.distinctBy { it.category to it.value }.take(MAX_FINDINGS_PER_CATEGORY)
+            weakCrypto = cryptoHits.distinctBy { it.category to it.value }.take(MAX_FINDINGS_PER_CATEGORY),
+            detectedSdks = sdkHits.sorted(),
+            nativeLibs = nativeLibs.sortedBy { it.fileName }
+        )
+    }
+
+    /** Jalanin AxmlParser lalu tarik atribut-atribut yang relevan buat audit keamanan. */
+    private fun analyzeManifest(rawBytes: ByteArray): ManifestSecurityInfo {
+        val root = AxmlParser.parse(rawBytes)
+
+        val packageName = root.attributes["package"]?.displayValue()
+        val versionCode = root.attributes["versionCode"]?.displayValue()
+        val versionName = root.attributes["versionName"]?.displayValue()
+        val usesSdk = root.children.find { it.name == "uses-sdk" }
+        val minSdk = usesSdk?.attributes?.get("minSdkVersion")?.displayValue()
+        val targetSdk = usesSdk?.attributes?.get("targetSdkVersion")?.displayValue()
+
+        val application = root.children.find { it.name == "application" }
+        val debuggable = application?.attributes?.get("debuggable")?.asBoolean
+        val allowBackup = application?.attributes?.get("allowBackup")?.asBoolean
+        val cleartext = application?.attributes?.get("usesCleartextTraffic")?.asBoolean
+        val hasNetSecConfig = application?.attributes?.containsKey("networkSecurityConfig") == true
+
+        val exportedNoPermission = mutableListOf<String>()
+        val componentTags = setOf("activity", "activity-alias", "service", "receiver", "provider")
+        application?.children?.forEach { comp ->
+            if (comp.name !in componentTags) return@forEach
+            val name = comp.attributes["name"]?.displayValue() ?: "?"
+            val exportedAttr = comp.attributes["exported"]?.asBoolean
+            val hasIntentFilter = comp.children.any { it.name == "intent-filter" }
+            val hasPermission = comp.attributes.containsKey("permission")
+            // Explicit exported=true, ATAU implicit export (attr gak ada tapi punya intent-filter —
+            // perilaku default pre-Android 12) — dua-duanya dianggap "exported" buat audit ini.
+            val isExported = exportedAttr == true || (exportedAttr == null && hasIntentFilter)
+            if (isExported && !hasPermission) {
+                exportedNoPermission.add("${comp.name}: $name")
+            }
+        }
+
+        return ManifestSecurityInfo(
+            packageName = packageName,
+            versionCode = versionCode,
+            versionName = versionName,
+            debuggable = debuggable,
+            allowBackup = allowBackup,
+            usesCleartextTraffic = cleartext,
+            hasNetworkSecurityConfig = hasNetSecConfig,
+            minSdkVersion = minSdk,
+            targetSdkVersion = targetSdk,
+            exportedWithoutPermission = exportedNoPermission,
+            parseError = null
         )
     }
 
