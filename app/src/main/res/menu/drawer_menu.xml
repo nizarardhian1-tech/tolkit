@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <group android:checkableBehavior="single">
+        <item 
+            android:id="@+id/homeFragment" 
+            android:icon="@drawable/ic_search_modern" 
+            android:title="@string/home" />
+        <item 
+            android:id="@+id/fileManagerFragment" 
+            android:icon="@drawable/ic_folder" 
+            android:title="@string/file_manager" />
+    </group>
+
+    <item android:title="Modding &amp; Dev Tools">
+        <menu>
+            <item 
+                android:id="@+id/xpatchFragment" 
+                android:icon="@drawable/ic_apk" 
+                android:title="@string/xpatch_title" />
+            <item 
+                android:id="@+id/nativeToolsFragment" 
+                android:icon="@drawable/ic_inspector" 
+                android:title="@string/native_tools_short" />
+            <item 
+                android:id="@+id/devConverterFragment" 
+                android:icon="@drawable/ic_code_convert" 
+                android:title="C++ Converter" />
+        </menu>
+    </item>
+
+    <item android:title="App &amp; Support">
+        <menu>
+            <item 
+                android:id="@+id/nav_share" 
+                android:icon="@drawable/share" 
+                android:title="Share App" />
+            <item 
+                android:id="@+id/nav_telegram" 
+                android:icon="@drawable/tele" 
+                android:title="Join Telegram" />
+        </menu>
+    </item>
+    
+</menu>

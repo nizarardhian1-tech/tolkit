@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+<title>HTML Runner Editor</title>
+<link rel="stylesheet" href="editor.css"/>
+</head>
+<body>
+  <div id="toolbar">
+    <button class="tbtn" data-action="undo" title="Undo">↶</button>
+    <button class="tbtn" data-action="redo" title="Redo">↷</button>
+    <span class="sep"></span>
+    <button class="tbtn" data-action="find" title="Cari &amp; Ganti">🔍</button>
+    <button class="tbtn" data-action="tag" title="Sisip &lt;tag&gt;">&lt;/&gt;</button>
+    <button class="tbtn" data-action="quote" title='Sisip "kutip"'>"&nbsp;"</button>
+    <button class="tbtn" data-action="tab" title="Indent">⇥</button>
+    <span class="sep"></span>
+    <button class="tbtn wide" data-action="zoomout" title="Perkecil font">A−</button>
+    <button class="tbtn wide" data-action="zoomin" title="Perbesar font">A+</button>
+  </div>
+
+  <div id="findbar" class="hidden">
+    <input id="findInput" placeholder="Cari..." autocomplete="off" autocapitalize="off" autocorrect="off"/>
+    <input id="replaceInput" placeholder="Ganti dengan..." autocomplete="off" autocapitalize="off" autocorrect="off"/>
+    <button class="fbtn" data-action="findnext">Berikutnya</button>
+    <button class="fbtn" data-action="replace">Ganti</button>
+    <button class="fbtn" data-action="replaceall">Semua</button>
+    <button class="fbtn close" data-action="closefind">✕</button>
+    <div id="findStatus"></div>
+  </div>
+
+  <div id="editorWrap">
+    <div id="gutter">1</div>
+    <div id="highlightLayer"><pre><code id="highlightCode"></code></pre></div>
+    <textarea id="codeArea" spellcheck="false" autocapitalize="off" autocomplete="off"
+      autocorrect="off" wrap="off"
+      placeholder="&lt;!-- Paste here --&gt;"></textarea>
+  </div>
+
+<script src="editor.js"></script>
+</body>
+</html>

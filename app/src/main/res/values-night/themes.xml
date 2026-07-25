@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Night override: hanya status bar icon + alpha glass, style/shape tetap sama seperti values/themes.xml -->
+    <style name="Theme.DNS" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <item name="fontFamily">@font/font_inter_regular</item>
+        <item name="android:fontFamily">@font/font_inter_regular</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.App.Body</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.App.BodyLarge</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.App.Title</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.App.TitleLarge</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.App.Headline</item>
+
+        <item name="shapeAppearanceCornerExtraSmall">@style/ShapeAppearance.App.Corner.Small</item>
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.App.Corner.Small</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.App.Corner.Medium</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.App.Corner.Large</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.App.Corner.ExtraLarge</item>
+
+        <item name="materialCardViewStyle">@style/Widget.App.CardView.Glass</item>
+        <item name="materialButtonStyle">@style/Widget.App.Button</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.App.Button.Outlined</item>
+        <item name="floatingActionButtonStyle">@style/Widget.App.Fab</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.Dialog</item>
+        <item name="navigationViewStyle">@style/Widget.App.NavigationView</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNav</item>
+        <item name="textInputStyle">@style/Widget.App.TextInputLayout</item>
+        <item name="chipStyle">@style/Widget.App.Chip</item>
+    </style>
+</resources>

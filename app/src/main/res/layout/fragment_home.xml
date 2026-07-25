@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="?android:colorBackground">
+
+    <LinearLayout
+        android:id="@+id/homeContentRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp"
+        android:layoutAnimation="@anim/home_layout_anim">
+
+        <!-- =================================================================== -->
+        <!-- BENTO 1: LIVE SYSTEM & NETWORK MONITOR BANNER                       -->
+        <!-- =================================================================== -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="@color/glass_surface_container"
+            app:cardCornerRadius="26dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/glass_stroke"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Header Brand -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/app_name"
+                            android:textColor="?attr/colorOnSurface"
+                            android:textSize="22sp"
+                            android:letterSpacing="-0.02"
+                            android:fontFamily="@font/font_inter_bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nav_header_subtitle"
+                            android:textColor="?attr/colorOnSurfaceVariant"
+                            android:textSize="11.5sp"
+                            android:fontFamily="@font/font_inter_regular"
+                            android:layout_marginTop="2dp"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvDeviceArch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="arm64-v8a"
+                        android:textColor="@color/console_accent_cyan"
+                        android:textSize="10.5sp"
+                        android:fontFamily="monospace"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp"
+                        android:background="@drawable/bg_patch_status_chip"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/glass_stroke"
+                    android:layout_marginVertical="14dp"/>
+
+                <!-- Live Metrics Grid -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- Shizuku Status Widget -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginEnd="6dp">
+
+                        <View
+                            android:id="@+id/dotShizuku"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:background="@drawable/shape_status_dot"
+                            android:layout_marginEnd="8dp"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SHIZUKU SERVICE"
+                                android:textSize="9.5sp"
+                                android:fontFamily="@font/font_inter_semibold"
+                                android:textColor="?attr/colorOnSurfaceVariant"/>
+                            <TextView
+                                android:id="@+id/tvShizukuStatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Checking..."
+                                android:textSize="12sp"
+                                android:fontFamily="@font/font_inter_semibold"
+                                android:textColor="?attr/colorOnSurface"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Network IP Widget -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="6dp">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_dns"
+                            app:tint="@color/colorPrimary"
+                            android:layout_marginEnd="8dp"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="LOCAL IP ADDRESS"
+                                android:textSize="9.5sp"
+                                android:fontFamily="@font/font_inter_semibold"
+                                android:textColor="?attr/colorOnSurfaceVariant"/>
+                            <TextView
+                                android:id="@+id/tvSystemIp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Detecting..."
+                                android:textSize="11.5sp"
+                                android:fontFamily="monospace"
+                                android:textColor="?attr/colorOnSurface"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- =================================================================== -->
+        <!-- BENTO 2: FEATURED CORE MODDING TOOLS                               -->
+        <!-- =================================================================== -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CORE ENGINE &amp; PATCHERS"
+            android:textSize="11sp"
+            android:letterSpacing="0.08"
+            android:fontFamily="@font/font_inter_semibold"
+            android:textColor="@color/console_accent_cyan"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Hero Card 1: LSPosed Studio -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardXpatch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="24dp"
+            app:cardBackgroundColor="@color/glass_surface_container"
+            app:strokeWidth="1.2dp"
+            app:strokeColor="@color/console_accent_violet"
+            app:cardElevation="3dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="18dp">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="16dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/img_lsposed"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="LSPosed Studio"
+                            android:textSize="16sp"
+                            android:textColor="?attr/colorOnSurface"
+                            android:fontFamily="@font/font_inter_bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="FEATURED"
+                            android:textSize="9.5sp"
+                            android:fontFamily="@font/font_inter_bold"
+                            android:textColor="@color/console_accent_violet"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="3dp"
+                            android:background="@drawable/bg_patch_status_chip"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Patch APKs to embed Xposed modules &amp; bypass signatures without root"
+                        android:textSize="11.5sp"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:layout_marginTop="4dp"
+                        android:lineSpacingExtra="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Hero Card 2: C++ Converter & Crypto Studio -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardConverter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="24dp"
+            app:cardBackgroundColor="@color/glass_surface_container"
+            app:strokeWidth="1.2dp"
+            app:strokeColor="@color/colorPrimary"
+            app:cardElevation="3dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="18dp">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="16dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/img_converter"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="C++ &amp; Crypto Studio"
+                            android:textSize="16sp"
+                            android:textColor="?attr/colorOnSurface"
+                            android:fontFamily="@font/font_inter_bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="XOR &amp; AES"
+                            android:textSize="9.5sp"
+                            android:fontFamily="@font/font_inter_bold"
+                            android:textColor="@color/colorPrimary"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="3dp"
+                            android:background="@drawable/bg_patch_status_chip"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Convert files to C++ arrays &amp; generate obfuscated string code snippets"
+                        android:textSize="11.5sp"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:layout_marginTop="4dp"
+                        android:lineSpacingExtra="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- =================================================================== -->
+        <!-- BENTO 3: REVERSE ENGINEERING & NATIVE TOOLS (2-COLUMN GRID)        -->
+        <!-- =================================================================== -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NATIVE &amp; REVERSE TOOLS"
+            android:textSize="11sp"
+            android:letterSpacing="0.08"
+            android:fontFamily="@font/font_inter_semibold"
+            android:textColor="@color/console_accent_cyan"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginBottom="12dp">
+
+            <!-- Native Tools -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardNativeTools"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                app:cardCornerRadius="22dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke"
+                android:clickable="true"
+                android:focusable="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/img_inspector"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Native Tools"
+                        android:textSize="14sp"
+                        android:textColor="?attr/colorOnSurface"
+                        android:fontFamily="@font/font_inter_semibold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=".so Inspector &amp; Crash"
+                        android:textSize="11sp"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Lua Encryptor -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardLuaEncryptor"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                app:cardCornerRadius="22dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke"
+                android:clickable="true"
+                android:focusable="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/img_lua_encryptor"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lua Encryptor"
+                        android:textSize="14sp"
+                        android:textColor="?attr/colorOnSurface"
+                        android:fontFamily="@font/font_inter_semibold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Obfuscate &amp; Bytecode"
+                        android:textSize="11sp"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- =================================================================== -->
+        <!-- BENTO 4: SYSTEM & FILE UTILITIES                                   -->
+        <!-- =================================================================== -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SYSTEM &amp; FILE UTILITIES"
+            android:textSize="11sp"
+            android:letterSpacing="0.08"
+            android:fontFamily="@font/font_inter_semibold"
+            android:textColor="@color/console_accent_cyan"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Grid 2 Kolom (File Manager & APK Extractor) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginBottom="12dp">
+
+            <!-- File Manager -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardFileManager"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                app:cardCornerRadius="22dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke"
+                android:clickable="true"
+                android:focusable="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/img_manager"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/file_manager"
+                        android:textSize="14sp"
+                        android:textColor="?attr/colorOnSurface"
+                        android:fontFamily="@font/font_inter_semibold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/subtitle_file"
+                        android:textSize="11sp"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- APK Extractor -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardApk"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                app:cardCornerRadius="22dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke"
+                android:clickable="true"
+                android:focusable="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/img_apk_extractor"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/apk_extractor"
+                        android:textSize="14sp"
+                        android:textColor="?attr/colorOnSurface"
+                        android:fontFamily="@font/font_inter_semibold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/subtitle_apk"
+                        android:textSize="11sp"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- Card APK Signer -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardApkSigner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="22dp"
+            app:cardBackgroundColor="@color/glass_surface_container"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/glass_stroke"
+            android:clickable="true"
+            android:focusable="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="14dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/img_apk_signer"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/apk_signer_title"
+                        android:textSize="14.5sp"
+                        android:textColor="?attr/colorOnSurface"
+                        android:fontFamily="@font/font_inter_semibold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/subtitle_apk_signer"
+                        android:textSize="11sp"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Card Security Scanner -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardSecurityScanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="22dp"
+            app:cardBackgroundColor="@color/glass_surface_container"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/glass_stroke"
+            android:clickable="true"
+            android:focusable="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="14dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/img_security_scanner"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/security_scanner_title"
+                        android:textSize="14.5sp"
+                        android:textColor="?attr/colorOnSurface"
+                        android:fontFamily="@font/font_inter_semibold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/subtitle_security_scanner"
+                        android:textSize="11sp"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- =================================================================== -->
+        <!-- BENTO 5: NETWORK & MISC TOOLS (2-COLUMN GRID)                     -->
+        <!-- =================================================================== -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NETWORK &amp; OTHER UTILITIES"
+            android:textSize="11sp"
+            android:letterSpacing="0.08"
+            android:fontFamily="@font/font_inter_semibold"
+            android:textColor="@color/console_accent_cyan"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginBottom="12dp">
+
+            <!-- DNS Secure -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDns"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                app:cardCornerRadius="22dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke"
+                android:clickable="true"
+                android:focusable="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/img_dns"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dns_changer"
+                        android:textSize="14sp"
+                        android:textColor="?attr/colorOnSurface"
+                        android:fontFamily="@font/font_inter_semibold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/subtitle_dns"
+                        android:textSize="11sp"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Network Diagnostic -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPing"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                app:cardCornerRadius="22dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke"
+                android:clickable="true"
+                android:focusable="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <LinearLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/circle_icon_ping"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_ping"
+                            app:tint="@android:color/white"/>
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ping_tester"
+                        android:textSize="14sp"
+                        android:textColor="?attr/colorOnSurface"
+                        android:fontFamily="@font/font_inter_semibold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/subtitle_ping"
+                        android:textSize="11sp"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- Grid 2 Kolom (HTML Runner & MLBB Reset) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginBottom="28dp">
+
+            <!-- HTML Runner -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardHtmlRunner"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                app:cardCornerRadius="22dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke"
+                android:clickable="true"
+                android:focusable="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/img_html_runner"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/html_runner_title"
+                        android:textSize="14sp"
+                        android:textColor="?attr/colorOnSurface"
+                        android:fontFamily="@font/font_inter_semibold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/subtitle_html_runner"
+                        android:textSize="11sp"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- MLBB Reset -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMlbb"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                app:cardCornerRadius="22dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke"
+                android:clickable="true"
+                android:focusable="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/img_mlbb"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mlbb_reset"
+                        android:textSize="14sp"
+                        android:textColor="?attr/colorOnSurface"
+                        android:fontFamily="@font/font_inter_semibold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/subtitle_mlbb"
+                        android:textSize="11sp"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- =================================================================== -->
+        <!-- BOTTOM SPACER - Mencegah keyboard menutupi konten                  -->
+        <!-- =================================================================== -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

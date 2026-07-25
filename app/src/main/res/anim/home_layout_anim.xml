@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Animasi cascade/stagger untuk section dashboard: setiap child (hero banner,
+     baris kartu, dst) muncul fade+slide-up satu per satu dengan jeda kecil,
+     sehingga dashboard terasa "hidup" saat pertama dibuka. -->
+<layoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"
+    android:delay="0.12"
+    android:animationOrder="normal"
+    android:animation="@anim/item_fade_slide_up" />

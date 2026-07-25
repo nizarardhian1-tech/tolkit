@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Mencakup seluruh Internal Storage, supaya file apa pun yang dikelola
+         File Manager (lokasi mana pun) bisa di-share lewat content:// URI. -->
+    <external-path name="external_files" path="." />
+</paths>

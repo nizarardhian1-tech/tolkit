@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_glass_dialog"
+    android:paddingTop="10dp"
+    android:paddingBottom="12dp">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_glass_pill"
+        android:alpha="0.4"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="14dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/recent_files_dialog_title"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/font_inter_semibold"
+            android:textColor="?attr/colorOnBackground"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnClearAllRecent"
+            style="@style/Widget.App.Button.Outlined"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:paddingHorizontal="14dp"
+            android:text="@string/action_delete_all"
+            android:textSize="11sp"
+            android:textAllCaps="false"/>
+
+        <ImageButton
+            android:id="@+id/btnCloseRecent"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_glass_pill"
+            android:src="@drawable/ic_close"
+            android:contentDescription="@string/action_close"
+            android:padding="8dp"
+            app:tint="?attr/colorOnBackground"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/recent_files_dialog_subtitle"
+        android:textSize="11sp"
+        android:textColor="?android:textColorSecondary"/>
+
+    <TextView
+        android:id="@+id/tvEmptyRecent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="@string/recent_files_empty_state"
+        android:textColor="?android:textColorSecondary"
+        android:textSize="13sp"
+        android:visibility="gone"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRecentFiles"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="8dp"/>
+
+</LinearLayout>

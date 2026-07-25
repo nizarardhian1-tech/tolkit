@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/netScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="?android:colorBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Network Diagnostic Studio"
+            android:textSize="22sp"
+            android:fontFamily="@font/font_inter_bold"
+            android:textColor="?attr/colorOnSurface"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Latency test, port scanner, and HTTP header inspector"
+            android:textSize="13sp"
+            android:layout_marginTop="2dp"
+            android:textColor="?attr/colorOnSurfaceVariant"/>
+
+        <!-- Network Info Header Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/glass_surface_container"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/glass_stroke"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_ping"
+                    app:tint="?attr/colorPrimary"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="14dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvNetInfoType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Connection: Active"
+                        android:fontFamily="@font/font_inter_semibold"
+                        android:textSize="14sp"
+                        android:textColor="?attr/colorOnSurface"/>
+
+                    <TextView
+                        android:id="@+id/tvNetInfoLocalIp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Local IP: Detecting..."
+                        android:textSize="11.5sp"
+                        android:fontFamily="monospace"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGetPublicIp"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:text="Public IP"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/font_inter_semibold"
+                    android:paddingHorizontal="10dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Segmented Toggle Tabs -->
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleNetMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:singleSelection="true"
+            app:selectionRequired="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tabPing"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_weight="1"
+                android:text="Ping"
+                android:textSize="12.5sp"
+                android:fontFamily="@font/font_inter_semibold"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tabPort"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_weight="1"
+                android:text="Port Checker"
+                android:textSize="12.5sp"
+                android:fontFamily="@font/font_inter_semibold"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tabHttp"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_weight="1"
+                android:text="HTTP Header"
+                android:textSize="12.5sp"
+                android:fontFamily="@font/font_inter_semibold"/>
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <!-- =================================================================== -->
+        <!-- TAB 1: PING LATENCY TESTER                                          -->
+        <!-- =================================================================== -->
+        <LinearLayout
+            android:id="@+id/containerPing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="16dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="Host / Domain / IP"
+                    app:boxCornerRadiusTopStart="14dp"
+                    app:boxCornerRadiusTopEnd="14dp"
+                    app:boxCornerRadiusBottomStart="14dp"
+                    app:boxCornerRadiusBottomEnd="14dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPingHost"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="google.com"
+                        android:textColor="?attr/colorOnSurface"
+                        android:fontFamily="monospace"
+                        android:textSize="13sp"
+                        android:inputType="textUri"
+                        android:maxLines="1"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnStartPing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="54dp"
+                    android:layout_marginStart="8dp"
+                    android:text="PING"
+                    android:fontFamily="@font/font_inter_bold"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <!-- Ping Summary Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPingSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:cardCornerRadius="18dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="MIN RTT"
+                            android:textSize="10sp"
+                            android:fontFamily="@font/font_inter_semibold"
+                            android:textColor="?attr/colorOnSurfaceVariant"/>
+                        <TextView
+                            android:id="@+id/tvPingMin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="- ms"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/font_inter_bold"
+                            android:textColor="?attr/colorPrimary"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="AVG RTT"
+                            android:textSize="10sp"
+                            android:fontFamily="@font/font_inter_semibold"
+                            android:textColor="?attr/colorOnSurfaceVariant"/>
+                        <TextView
+                            android:id="@+id/tvPingAvg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="- ms"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/font_inter_bold"
+                            android:textColor="@color/console_text_success"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="MAX RTT"
+                            android:textSize="10sp"
+                            android:fontFamily="@font/font_inter_semibold"
+                            android:textColor="?attr/colorOnSurfaceVariant"/>
+                        <TextView
+                            android:id="@+id/tvPingMax"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="- ms"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/font_inter_bold"
+                            android:textColor="@color/console_text_error"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Console Log -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:cardCornerRadius="20dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke">
+
+                <ScrollView
+                    android:id="@+id/scrollPingConsole"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/tvPingConsole"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="> Ready to ping host...\n"
+                        android:textColor="@color/console_accent_cyan"
+                        android:fontFamily="monospace"
+                        android:textSize="12sp"
+                        android:lineSpacingExtra="3dp"
+                        android:textIsSelectable="true"/>
+                </ScrollView>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- =================================================================== -->
+        <!-- TAB 2: PORT CHECKER                                                 -->
+        <!-- =================================================================== -->
+        <LinearLayout
+            android:id="@+id/containerPort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Host / Domain / IP"
+                app:boxCornerRadiusTopStart="14dp"
+                app:boxCornerRadiusTopEnd="14dp"
+                app:boxCornerRadiusBottomStart="14dp"
+                app:boxCornerRadiusBottomEnd="14dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPortHost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="google.com"
+                    android:textColor="?attr/colorOnSurface"
+                    android:fontFamily="monospace"
+                    android:textSize="13sp"
+                    android:inputType="textUri"
+                    android:maxLines="1"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preset Common Ports"
+                android:textSize="12.5sp"
+                android:fontFamily="@font/font_inter_semibold"
+                android:textColor="?attr/colorPrimary"
+                android:layout_marginTop="14dp"/>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupPorts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipPort80"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="80 (HTTP)"
+                    android:checked="true"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipPort443"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="443 (HTTPS)"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipPort22"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="22 (SSH)"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipPort8080"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8080 (Web)"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipPort3306"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3306 (MySQL)"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipPort53"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="53 (DNS)"/>
+            </com.google.android.material.chip.ChipGroup>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Custom Port Number"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etCustomPort"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorOnSurface"
+                    android:inputType="number"
+                    android:textSize="13sp"
+                    android:maxLines="1"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCheckPort"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="16dp"
+                android:text="CHECK PORT STATUS"
+                android:fontFamily="@font/font_inter_bold"/>
+
+            <!-- Port Result Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPortResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tvPortStatusChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PORT OPEN"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/font_inter_bold"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="4dp"
+                        android:textColor="@color/console_text_success"
+                        android:background="@drawable/bg_patch_status_chip_done"/>
+
+                    <TextView
+                        android:id="@+id/tvPortDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="monospace"
+                        android:textSize="12.5sp"
+                        android:lineSpacingExtra="3dp"
+                        android:textColor="?attr/colorOnSurface"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- =================================================================== -->
+        <!-- TAB 3: HTTP HEADER INSPECTOR                                        -->
+        <!-- =================================================================== -->
+        <LinearLayout
+            android:id="@+id/containerHttp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Target URL (e.g. https://google.com)"
+                app:boxCornerRadiusTopStart="14dp"
+                app:boxCornerRadiusTopEnd="14dp"
+                app:boxCornerRadiusBottomStart="14dp"
+                app:boxCornerRadiusBottomEnd="14dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etHttpUrl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="https://google.com"
+                    android:textColor="?attr/colorOnSurface"
+                    android:fontFamily="monospace"
+                    android:textSize="13sp"
+                    android:inputType="textUri"
+                    android:maxLines="1"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnInspectHttp"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="16dp"
+                android:text="INSPECT HEADERS"
+                android:fontFamily="@font/font_inter_bold"/>
+
+            <!-- HTTP Result Display -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardHttpResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/tvHttpStatusBadge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="200 OK"
+                            android:textColor="@color/console_text_success"
+                            android:fontFamily="@font/font_inter_bold"
+                            android:textSize="13sp"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="4dp"
+                            android:background="@drawable/bg_patch_status_chip_done"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/btnCopyHttpHeaders"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="COPY ALL"
+                            android:textColor="?attr/colorPrimary"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/font_inter_bold"
+                            android:padding="6dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:focusable="true"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvHttpHeaderResult"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="monospace"
+                        android:textSize="12sp"
+                        android:textColor="?attr/colorOnSurface"
+                        android:lineSpacingExtra="3dp"
+                        android:textIsSelectable="true"
+                        tools:text="HTTP/1.1 200 OK\nServer: gws\nContent-Type: text/html; charset=ISO-8859-1"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- Bottom Spacer -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="280dp" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

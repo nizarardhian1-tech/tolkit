@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MonToolkit</string>
+    <string name="nav_header_subtitle">All-in-one Android Utility</string>
+    <string name="home">Home</string>
+    <string name="dns_changer">DNS Secure</string>
+    <string name="ping_tester">Network Check</string>
+    <string name="mlbb_reset">MLBB Guest Reset</string>
+    <string name="apk_extractor">App Extractor</string>
+    <string name="file_manager">File Manager</string>
+    <string name="html_runner_title">HTML Runner</string>
+    <string name="apk_signer_title">APK Signer</string>
+
+    <!-- home subtitles -->
+    <string name="subtitle_dns">Privacy &amp; protection</string>
+    <string name="subtitle_ping">Latency &amp; connectivity check</string>
+    <string name="subtitle_mlbb">Reset Guest account without root</string>
+    <string name="subtitle_apk">Extract &amp; backup installed APKs</string>
+    <string name="subtitle_html_runner">Test &amp; run HTML/JS code</string>
+    <string name="subtitle_file">File manager &amp; Scoped Storage access</string>
+    <string name="subtitle_apk_signer">Generate keystore &amp; sign APK</string>
+
+    <!-- APK Signer -->
+    <string name="apk_signer_section_generate">Generate New Keystore</string>
+    <string name="apk_signer_keystore_name">Keystore file name</string>
+    <string name="apk_signer_alias">Key alias</string>
+    <string name="apk_signer_password">Password</string>
+    <string name="apk_signer_common_name">Certificate name (CN)</string>
+    <string name="apk_signer_btn_generate">Generate Keystore</string>
+    <string name="apk_signer_section_sign">Sign APK</string>
+    <string name="apk_signer_pick_apk">Select APK</string>
+    <string name="apk_signer_pick_apk_hint">No APK selected</string>
+    <string name="apk_signer_pick_keystore">Select Keystore</string>
+    <string name="apk_signer_pick_keystore_hint">No keystore selected</string>
+    <string name="apk_signer_output_name">Output APK name</string>
+    <string name="apk_signer_btn_sign">Sign APK</string>
+    <string name="apk_signer_no_keystore">Generate or select a keystore first</string>
+    <string name="apk_signer_no_apk">Select an APK file first</string>
+    <string name="apk_signer_generating">Generating keystore…</string>
+    <string name="apk_signer_signing">Signing APK…</string>
+    <string name="apk_signer_generate_success">Keystore created successfully: %1$s</string>
+    <string name="apk_signer_generate_failed">Failed to create keystore: %1$s</string>
+    <string name="apk_signer_sign_success">APK signed successfully: %1$s</string>
+    <string name="apk_signer_sign_failed">Failed to sign APK: %1$s</string>
+    <string name="apk_signer_jks_hint">Old .jks format is not supported — generate a new keystore above, or select a .p12/.keystore file (PKCS12).</string>
+
+    <!-- APK Signer: password generate & advanced -->
+    <string name="apk_signer_password_generate">🎲 Generate Random Password</string>
+    <string name="apk_signer_advanced_settings">Advanced Settings</string>
+    <string name="apk_signer_key_size">Key Size</string>
+    <string name="apk_signer_org_name">Organization Name</string>
+    <string name="apk_signer_org_unit">Organization Unit</string>
+    <string name="apk_signer_city">City</string>
+    <string name="apk_signer_state">State/Province</string>
+    <string name="apk_signer_country_code">Country Code</string>
+    <string name="apk_signer_optional_hint">All fields below are optional — only metadata in the certificate, doesn\'t affect whether APK runs.</string>
+    <string name="apk_signer_v3_title">Signature V3</string>
+    <string name="apk_signer_v3_subtitle">Recommended for Android 9+</string>
+    <string name="apk_signer_v4_title">Signature V4</string>
+    <string name="apk_signer_v4_subtitle">For incremental updates on Android 11+ (produces separate .idsig file)</string>
+    <string name="apk_signer_alignment_title">Alignment (zip-align)</string>
+    <string name="apk_signer_alignment_subtitle">Automatic — already part of the signing process, no manual step needed</string>
+
+    <!-- Security Scanner -->
+    <string name="security_scanner_title">Security Scanner</string>
+    <string name="subtitle_security_scanner">Scan APK: signing, permissions, secrets</string>
+    <string name="security_scanner_pick_apk_hint">No APK selected</string>
+    <string name="security_scanner_btn_scan">Scan APK</string>
+    <string name="security_scanner_scanning">Scanning APK…</string>
+    <string name="security_scanner_section_signing">Signing Info</string>
+    <string name="security_scanner_section_permissions">Dangerous Permissions</string>
+    <string name="security_scanner_section_secrets">Possible Hardcoded Secrets</string>
+    <string name="security_scanner_section_network">URLs &amp; IP Addresses</string>
+    <string name="security_scanner_section_crypto">Weak Crypto Indicators</string>
+    <string name="security_scanner_none_found">None found</string>
+    <string name="security_scanner_disclaimer">Heuristic pattern-matching — not a definitive security verdict. False positives/negatives possible.</string>
+    <string name="security_scanner_btn_export">Export Report</string>
+    <string name="security_scanner_export_success">Report saved: %1$s</string>
+
+    <!-- Categories -->
+    <string name="category_network">Network &amp; Connectivity</string>
+    <string name="category_modding">Modding &amp; Reverse Tools</string>
+    <string name="category_utilities">Utilities &amp; System Tools</string>
+
+    <!-- File Manager -->
+    <string name="fm_internal">Internal</string>
+    <string name="fm_folder_empty">Folder is empty</string>
+    <string name="fm_no_results_for">No results for \"%1$s\"</string>
+    <string name="fm_no_search_results">No files found</string>
+    <string name="fm_files_found">%1$d files found</string>
+    <string name="fm_searching_title">Searching…</string>
+    <string name="fm_searching_message">Scanning entire Internal Storage, please wait.</string>
+    <string name="fm_search_hint">Press SEARCH to find all %1$s files across Internal Storage</string>
+    <string name="fm_search_button">SEARCH</string>
+    <string name="fm_search_name_hint">Search file name…</string>
+    <string name="fm_waiting_search">Waiting for search…</string>
+    <string name="fm_press_search_button">Press the SEARCH button above</string>
+    <string name="fm_selected_count">%1$d selected</string>
+    <string name="fm_processing_title">Processing</string>
+    <string name="fm_please_wait">Please wait…</string>
+    <string name="fm_items_copied">%1$d items copied</string>
+    <string name="fm_items_moved">%1$d items moved</string>
+    <string name="fm_delete_title">Delete Files</string>
+    <string name="fm_delete_confirm">Are you sure you want to delete %1$d items?</string>
+    <string name="fm_delete">DELETE</string>
+    <string name="fm_cancel">CANCEL</string>
+    <string name="fm_deleted_success">Deleted successfully</string>
+    <string name="fm_new_folder_title">New Folder</string>
+    <string name="fm_folder_name_hint">Folder name</string>
+    <string name="fm_create">CREATE</string>
+    <string name="fm_folder_create_failed">Failed to create folder</string>
+    <string name="fm_grant_access">Please grant All Files Access first.</string>
+    <string name="fm_open_coming_soon">Opening files coming soon!</string>
+    <string name="fm_open_with">Open with</string>
+    <string name="fm_no_app_to_open">No app found to open this file</string>
+    <string name="fm_installing_split">Installing split APK set…</string>
+    <string name="fm_install_failed_format">Install failed: %1$s</string>
+    <string name="fm_install_conflict_title">Warning</string>
+    <string name="fm_install_conflict_detail">The signature of "%1$s" is inconsistent with the installed application. Uninstall the old version first, then install this one?</string>
+    <string name="fm_install_conflict_direct">Install Directly</string>
+    <string name="fm_install_conflict_uninstall">Uninstall &amp; Install</string>
+    <string name="installer_success">Installed successfully</string>
+    <string name="installer_failed_format">Install failed: %1$s</string>
+
+    <!-- NPatch Engine Console -->
+    <string name="patch_console_title">NPatch Engine</string>
+    <string name="patch_console_subtitle">Patch &amp; Build Console</string>
+    <string name="patch_console_status_running">RUNNING</string>
+    <string name="patch_console_status_done">DONE</string>
+    <string name="patch_console_status_failed">FAILED</string>
+    <string name="patch_console_return">RETURN</string>
+    <string name="patch_console_install">INSTALL</string>
+    <string name="patch_console_chevron_collapse">⌄</string>
+    <string name="patch_console_chevron_expand">⌃</string>
+    <string name="patch_console_log_start_format">[%1$d/%2$d] ▸ Starting pipeline for %3$s</string>
+    <string name="patch_console_log_unzip">  ├─ Unpacking APK container…</string>
+    <string name="patch_console_log_merge_split">  ├─ Merging matching-ABI native libs from split set…</string>
+    <string name="patch_console_log_strip_sig">  ├─ Stripping original signature blocks…</string>
+    <string name="patch_console_log_signature_format">  ├─ 🔏 Original signer (SHA-256): %1$s</string>
+    <string name="patch_console_log_signature_missing">  ├─ ⚠ Original signature not found in source APK</string>
+    <string name="patch_console_log_inject_loader">  ├─ Injecting NPatch loader stub…</string>
+    <string name="patch_console_log_inject_native">  ├─ Deploying native hook libraries (arm64/x86_64)…</string>
+    <string name="patch_console_log_inject_meta">  ├─ Linking metaloader dex…</string>
+    <string name="patch_console_log_inject_module_format">  ├─ Embedding Xposed module: %1$s</string>
+    <string name="patch_console_log_write_config">  ├─ Writing engine config (bypass Lv%1$d)…</string>
+    <string name="patch_console_log_manifest">  ├─ Patching AndroidManifest.xml…</string>
+    <string name="patch_console_log_repack">  ├─ Repacking &amp; aligning archive…</string>
+    <string name="patch_console_log_sign">  ├─ Signing with AndroidKeyStore…</string>
+    <string name="patch_console_log_done_format">  └─ ✔ Build complete → %1$s</string>
+    <string name="patch_console_log_saved_location_format">        📁 Saved to: %1$s</string>
+    <string name="patch_console_log_failed_format">  └─ ✘ Failed: %1$s</string>
+    <string name="patch_console_log_all_done_format">\n◆ Pipeline finished — %1$d success, %2$d failed.</string>
+    <string name="patch_console_log_conflict_check">Scanning target for installer conflicts…</string>
+    <string name="patch_console_log_conflict_found_format">⚠ Signature conflict with installed package: %1$s</string>
+    <string name="patch_console_log_uninstalling">Requesting uninstall of previous version…</string>
+    <string name="patch_console_log_installing">Launching system installer…</string>
+
+    <!-- Notification hasil patch -->
+    <string name="xpatch_notif_channel_name">Xpatch Engine</string>
+    <string name="xpatch_notif_channel_desc">Notifications for APK patch results</string>
+    <string name="xpatch_notif_title_success">Patch successful</string>
+    <string name="xpatch_notif_text_success_format">%1$d APK successfully patched, ready to install.</string>
+    <string name="xpatch_notif_title_partial">Patch partially completed</string>
+    <string name="xpatch_notif_text_partial_format">%1$d succeeded, %2$d failed.</string>
+    <string name="xpatch_notif_title_failed">Patch failed</string>
+    <string name="xpatch_notif_text_failed">All targets failed to patch. Open the app to see details.</string>
+
+    <string name="fm_move">MOVE</string>
+    <string name="fm_copy">COPY</string>
+    <string name="fm_paste_move_here">PASTE MOVE HERE</string>
+    <string name="fm_paste_copy_here">PASTE COPY HERE</string>
+    <string name="fm_paste_here">PASTE HERE</string>
+    <string name="fm_sort_name_asc">Name (A-Z)</string>
+    <string name="fm_sort_name_desc">Name (Z-A)</string>
+    <string name="fm_sort_newest">Newest</string>
+    <string name="fm_sort_oldest">Oldest</string>
+    <string name="fm_sort_largest">Largest size</string>
+    <string name="fm_sort_smallest">Smallest size</string>
+    <string name="fm_all_files">All Files</string>
+    <string name="fm_storage_info">%1$.1f / %2$.1f GB</string>
+    <string name="fm_items_count">%1$d items</string>
+    <string name="fm_rename">RENAME</string>
+    <string name="fm_rename_title">Rename</string>
+    <string name="fm_rename_failed">Rename failed, name may already exist</string>
+    <string name="fm_select_all">Select all</string>
+    <string name="fm_file_info">Info</string>
+    <string name="fm_file_info_title">File Info</string>
+    <string name="fm_share">SHARE</string>
+
+    <!-- Dev Converter -->
+    <string name="conv_title">C++ Converter Studio</string>
+    <string name="conv_subtitle">Convert file to C++ or Base64 array header</string>
+    <string name="conv_tap_to_select">Select Input File</string>
+    <string name="conv_supports_any">Supports .so, .apk, .zip, media &amp; documents</string>
+    <string name="conv_format_title">Output Format</string>
+    <string name="conv_format_hex">Hex Byte Array (.h)\nunsigned char arr[] = { 0x00... }</string>
+    <string name="conv_format_base64_header">Base64 C++ String (.h)\nconst char* arr = \"base64...\"</string>
+    <string name="conv_format_base64_text">Raw Base64 Text (.txt)\nPlain Base64 text file</string>
+    <string name="conv_array_name_hint">C++ Variable Name</string>
+    <string name="conv_array_name_hint_zip">Prefix Name (ZIP entries)</string>
+    <string name="conv_file_info">%1$d KB • .%2$s file</string>
+    <string name="conv_file_info_large">%1$d KB • .%2$s • Large file</string>
+    <string name="conv_file_info_zip">%1$d KB • %2$d files inside ZIP</string>
+    <string name="conv_button_start">START CONVERSION</string>
+    <string name="conv_running_background">Conversion is running in the background…</string>
+
+    <!-- Validation & error -->
+    <string name="conv_error_no_file">Please select a file first!</string>
+    <string name="conv_error_unsupported_title">Unsupported File</string>
+    <string name="conv_error_unsupported_message">"\".%1$s\" files are not supported yet.\n\nSupported: .so, .apk, .zip, images, audio, video, fonts, and common data/text formats."</string>
+    <string name="conv_error_empty_file">This file is empty (0 KB) and cannot be converted.</string>
+    <string name="conv_error_read_failed">Failed to read selected file.</string>
+    <string name="conv_error_zip_base64text">The \"Raw Base64 Text\" mode is not supported for ZIP files (multiple files). Choose \"Hex Byte Array\" or \"Base64 C++ String\" instead.</string>
+    <string name="conv_error_storage_permission">Please grant \'All Files Access\' to save output.</string>
+    <string name="conv_error_generic_title">Conversion Failed</string>
+    <string name="conv_error_create_folder">Failed to create output folder. Check storage permission.</string>
+
+    <!-- Large file confirmation -->
+    <string name="conv_large_file_title">Large File Detected</string>
+    <string name="conv_large_file_message">This file is %1$d MB. Conversion may take a while and will run in the background with a notification. Continue?</string>
+    <string name="conv_large_file_continue">Continue</string>
+    <string name="conv_large_file_cancel">Cancel</string>
+
+    <!-- Notifications -->
+    <string name="conv_notif_channel_name">File Conversion</string>
+    <string name="conv_notif_channel_desc">Shows progress when converting files in Converter</string>
+    <string name="conv_notif_title_progress">Converting file…</string>
+    <string name="conv_notif_text_progress">%1$s — %2$d%%</string>
+    <string name="conv_notif_title_done">Conversion Complete</string>
+    <string name="conv_notif_text_done">%1$s saved to MonToolKit/Converter</string>
+    <string name="conv_notif_title_error">Conversion Failed</string>
+
+    <!-- Success dialog -->
+    <string name="conv_done_title">Conversion Complete 🎉</string>
+    <string name="conv_done_body">File created:\n%1$s\n\nLocation:\nInternal Storage/MonToolKit/Converter/\n\nHow to use in C++:\n\n%2$s</string>
+    <string name="conv_done_ok">Got it</string>
+    <string name="conv_usage_zip">#include \"%1$s\"\n\n// Look up a file by its original name inside the zip:\nfor (unsigned int i = 0; i &lt; embeddedAssetsCount; i++) {\n    auto&amp; a = embeddedAssets[i];\n    // a.filename, a.data, a.length\n}</string>
+    <string name="conv_usage_hex">#include \"%1$s\"\n\nconst unsigned char* data = %2$s;\nunsigned int len = %2$s_len;</string>
+    <string name="conv_usage_base64_header">#include \"%1$s\"\n\nconst char* b64 = %2$s;\n// decode it first using your favorite base64 decoder</string>
+    <string name="conv_usage_base64_text">Open %1$s — it contains plain base64 text.\nCopy-paste it wherever you need it.</string>
+
+    <!-- Native Tools hub -->
+    <string name="native_tools_title">Native Library Tools</string>
+    <string name="native_tools_home_subtitle">.so Inspector &amp; Crash Analyzer</string>
+    <string name="native_tools_subtitle">Diagnostic tools for NDK/C++ developers — inspect .so files and decode native crash logs.</string>
+
+    <!-- So Inspector -->
+    <string name="so_inspector_title">.so Inspector</string>
+    <string name="so_inspector_subtitle">Architecture, symbols, dependencies</string>
+    <string name="inspector_tap_to_select">Tap to Select a .so File</string>
+    <string name="inspector_supports_so">Reads ELF header, symbol table, and dependencies</string>
+    <string name="inspector_error_read">Failed to read selected file.</string>
+    <string name="inspector_error_invalid">This doesn\'t look like a valid ELF (.so) file.</string>
+    <string name="inspector_arch_label">Architecture: %1$s · %2$s</string>
+    <string name="inspector_stripped_yes">Debug symbols: Stripped (no .symtab)</string>
+    <string name="inspector_stripped_no">Debug symbols: Present (not stripped)</string>
+    <string name="inspector_entry_point">Entry point: %1$s</string>
+    <string name="inspector_file_size">File size: %1$d KB</string>
+    <string name="inspector_needed_libs_title">Needed Libraries (DT_NEEDED)</string>
+    <string name="inspector_no_deps">No external dependencies found</string>
+    <string name="inspector_export_button">Export Symbols to File (.txt)</string>
+    <string name="inspector_export_done_title">Export Complete</string>
+    <string name="inspector_export_done_message">Saved to:\n%1$s</string>
+    <string name="inspector_export_share">Share</string>
+    <string name="inspector_export_failed">Failed to export file.</string>
+    <string name="inspector_strip_button">Strip Symbols (.so)</string>
+    <string name="inspector_stripping_title">Stripping</string>
+    <string name="inspector_stripping_message">Removing debug symbols…</string>
+    <string name="inspector_strip_done_title">Strip Complete</string>
+    <string name="inspector_strip_done_message">Saved to:\n%1$s\n\nOriginal: %2$s\nStripped: %3$s (saved %4$s)\n\nRemoved sections:\n%5$s</string>
+    <string name="inspector_strip_failed">Strip failed: %1$s</string>
+    <string name="inspector_exported_header">Exported Functions (%1$d)</string>
+    <string name="inspector_imported_header">Imported Functions (%1$d)</string>
+    <string name="inspector_exported_header_capped">Exported Functions (showing %2$,d of %1$,d)</string>
+    <string name="inspector_imported_header_capped">Imported Functions (showing %2$,d of %1$,d)</string>
+    <string name="inspector_imported_meta">external symbol — resolved at load time by another .so</string>
+    <string name="inspector_parsing">Parsing ELF… this can take a moment for large files</string>
+    <string name="inspector_error_oom">File is too large to parse on this device (out of memory). Try a device with more RAM or a smaller file.</string>
+    <string name="inspector_large_file_title">Large File</string>
+    <string name="inspector_large_file_message">This file is about %1$d MB. Parsing may take a while and use significant memory. Continue?</string>
+    <string name="inspector_build_id">Build ID: %1$s</string>
+    <string name="inspector_no_build_id">not present</string>
+    <string name="inspector_state_lost">The app was restarted while this was processing in the background (likely by the system), so the result was lost. Please pick the file again.</string>
+    <string name="inspector_background_toast">Running in the background — feel free to switch apps, you\'ll get a notification when it\'s done.</string>
+    <string name="inspector_background_hint">Processing in the background… you can switch to another app, a notification will let you know when it\'s done.</string>
+    <string name="inspect_notif_channel_name">Library Inspection</string>
+    <string name="inspect_notif_channel_desc">Progress for .so file analysis</string>
+    <string name="inspect_notif_title_progress">Analyzing library</string>
+    <string name="inspect_notif_text_progress">Reading %1$s…</string>
+    <string name="inspect_notif_title_done">Analysis complete</string>
+    <string name="inspect_notif_text_done">%1$s is ready — tap to view</string>
+    <string name="inspect_notif_title_error">Analysis failed</string>
+
+    <!-- Crash Analyzer -->
+    <string name="crash_analyzer_title">Crash Analyzer</string>
+    <string name="crash_analyzer_subtitle">Resolve native pc addresses to function names</string>
+    <string name="crash_howto_title">How to use</string>
+    <string name="crash_howto_body">1. Paste a native crash log, or tap \"Upload Log / Tombstone File\" for long files (thousands of lines).\n2. Optionally upload the matching, non-stripped .so — its Build ID is checked against the log so results aren\'t misleading if it\'s the wrong version.\n3. Tap ANALYZE.</string>
+    <string name="crash_log_hint">Paste native crash log here</string>
+    <string name="crash_pick_so_optional">Tap to attach matching .so (optional, improves accuracy)</string>
+    <string name="crash_analyze_button">ANALYZE</string>
+    <string name="crash_error_empty">Please paste a crash log first.</string>
+    <string name="crash_error_no_frames">No native backtrace lines found (expected format: \"#01 pc &lt;offset&gt; libname.so\").</string>
+    <string name="crash_no_so_uploaded">No .so uploaded — showing raw offset only</string>
+    <string name="crash_wrong_library">Uploaded .so doesn\'t match %1$s</string>
+    <string name="crash_stripped_no_symbols">Symbol table missing (file is stripped)</string>
+    <string name="crash_no_match">No matching symbol found at this offset</string>
+    <string name="crash_result_header">Resolved Frames (%1$d)</string>
+    <string name="crash_upload_log_file">Upload Log / Tombstone File</string>
+    <string name="crash_error_file_read">Failed to read selected file as text.</string>
+    <string name="crash_lines_loaded">%1$,d lines loaded</string>
+    <string name="crash_build_id_mismatch">Build ID mismatch — wrong .so version</string>
+
+    <string name="fm_shizuku_menu_item">Shizuku Access Status</string>
+    <string name="fm_shizuku_title">Shizuku</string>
+    <string name="fm_shizuku_not_installed">Shizuku app is not installed/active. Install it first, then activate via Wireless Debugging or ADB.</string>
+    <string name="fm_shizuku_open_page">Open Guide</string>
+    <string name="fm_shizuku_no_browser">No browser installed</string>
+    <string name="fm_shizuku_need_permission">Shizuku is active but permission has not been granted to this app.</string>
+    <string name="fm_shizuku_request">Request Permission</string>
+    <string name="fm_shizuku_active">Shizuku is active and permission granted. Access to Android/data and Android/obb is ready.</string>
+    <string name="fm_shizuku_granted">Shizuku permission granted</string>
+    <string name="fm_shizuku_denied">Shizuku permission denied</string>
+    <string name="fm_shizuku_op_blocked">This action needs access to protected Android/data folder.</string>
+    <string name="mlbb_shizuku_offer_install">This feature needs access to Android/data. Activate Shizuku once for automatic backup/restore in the future, or pick the folder manually now.</string>
+    <string name="mlbb_shizuku_offer_permission">Shizuku is active but permission hasn\'t been granted to this app. Grant permission now for automatic operation, or pick folder manually.</string>
+    <string name="mlbb_pick_folder_manual">Pick Folder Manually</string>
+
+    <!-- SO Inspector / Dev Converter / Security Info -->
+    <string name="conv_error_insufficient_space">This conversion needs about %1$d MB of free space, but only %2$d MB is available. Free up space or switch to Base64 format (much smaller output) and try again.</string>
+    <string name="conv_suggest_base64">Tip: Hex Byte Array can be ~7x larger than the original file. For large files, Base64 C++ String is ~5x smaller and much faster.</string>
+
+    <!-- Encrypt-first option (SoEncryptor, .so files only) -->
+    <string name="conv_encrypt_first_title">Encrypt before converting (AES-256)</string>
+    <string name="conv_encrypt_first_hint">Encrypts the .so first, then outputs protected_lib_data.h + protected_lib_key.h — ready to drop into your loader\'s jni/ folder. Format and array name are locked while this is on.</string>
+    <string name="conv_encrypt_first_error">Failed to encrypt the .so file: %1$s</string>
+    <string name="conv_done_title_encrypt">Encryption + Conversion Complete 🔒</string>
+    <string name="conv_done_body_encrypt">Two files were created in MonToolKit/Converter:\n• protected_lib_data.h\n• protected_lib_key.h\n\nCopy both into your loader\'s jni/ folder, overwriting the placeholders. Then just build — no code changes needed on the loader side.</string>
+
+    <string name="conv_encrypt_section_title">Encryption (.so only)</string>
+    <string name="conv_encrypt_section_subtitle">Pick a mode below — only applies once you select a .so file.</string>
+    <string name="conv_encrypt_mode_off">Off — normal convert</string>
+    <string name="conv_encrypt_mode_then_convert">Encrypt, then convert to header (.h)</string>
+    <string name="conv_encrypt_mode_only">Encrypt .so only (.enc, no header)</string>
+    <string name="conv_encrypt_only_hint">Outputs a plain .enc file (AES-256-CTR) plus a keyinfo.txt with the Base64 key. No header/array conversion happens in this mode.</string>
+    <string name="conv_encrypt_only_error">Failed to encrypt the .so file: %1$s</string>
+    <string name="conv_encrypt_verify_failed">Encryption verification failed — the decrypted output doesn\'t match the original file byte-for-byte. Nothing was written; please try again. If this keeps happening, check available storage and RAM on the device.</string>
+    <string name="conv_encrypt_needs_so">This encryption mode needs a .so file. Please pick a .so file, or switch the encryption mode to \"Off\".</string>
+    <string name="conv_done_title_encrypt_only">Encryption Complete 🔒</string>
+    <string name="conv_done_body_encrypt_only">Two files were created in MonToolKit/Converter:\n• %1$s\n• %2$s\n\nThe .enc file is the encrypted library (IV is the first 16 bytes). The keyinfo.txt has the Base64 AES-256 key — keep it safe, without it the .enc can\'t be decrypted.</string>
+    <string name="conv_keyinfo_content">MonToolkit - SoEncryptor key info\n================================\nOriginal file: %2$s\nEncrypted file: %3$s\nCipher: AES-256-CTR\nIV: first 16 bytes of %3$s\n\nAES-256 key (Base64):\n%1$s\n\nKeep this file safe and private. Anyone with this key can decrypt %3$s.\nWithout it, %3$s can never be decrypted again.\n</string>
+
+    <string name="inspector_security_title">Security / Hardening Info</string>
+    <string name="inspector_sha256">SHA-256: %1$s</string>
+    <string name="inspector_hardening">NX: %1$s · RELRO: %2$s · Canary: %3$s · Fortify: %4$s</string>
+    <string name="inspector_yes">Yes</string>
+    <string name="inspector_no">No</string>
+    <string name="inspector_unknown">Unknown</string>
+    <string name="inspector_detail_unavailable">Function detail unavailable — try re-inspecting the file.</string>
+
+    <!-- Export Options -->
+    <string name="inspector_export_options_message">Do you want to include the Hex Dump for each function?\n\nNote: Including Hex Dump for large files (e.g., Unity IL2CPP) can take a very long time and produce a huge file.</string>
+    <string name="inspector_export_include_hex">Include Hex</string>
+    <string name="inspector_export_no_hex">No Hex (Faster)</string>
+    <string name="inspector_exporting_title">Exporting</string>
+    <string name="inspector_exporting_message">Please wait, generating export file...</string>
+    <string name="inspector_strings_button">Extract Strings</string>
+    <string name="inspector_extracting_title">Extracting Strings</string>
+    <string name="inspector_extracting_message">Scanning file for readable strings (API Keys, URLs). Please wait...</string>
+
+    <!-- HTML Runner: generic actions -->
+    <string name="action_cancel">Cancel</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_delete_all">Delete All</string>
+    <string name="action_close">Close</string>
+    <string name="action_open_file_short">File</string>
+    <string name="action_open_folder_short">Folder</string>
+
+    <!-- HTML Runner: header buttons -->
+    <string name="desc_history_button">Run History</string>
+    <string name="desc_recent_files_button">Recent Files</string>
+    <string name="desc_save_export_button">Save / Export</string>
+
+    <!-- HTML Runner: Run History dialog -->
+    <string name="history_dialog_title">Run History</string>
+    <string name="history_dialog_subtitle">Only saves code you type or paste manually and run — opened files/folders are not included here. Tap an entry to load it back.</string>
+    <string name="history_empty_state">No run history yet.\nType or paste some HTML and press RUN.</string>
+    <string name="source_label_manual">Typed / pasted manually</string>
+    <string name="confirm_delete_history_title">Delete this entry?</string>
+    <string name="confirm_delete_all_history_title">Delete all run history?</string>
+    <string name="confirm_delete_all_history_message">All previously run code snapshots will be permanently deleted from this device.</string>
+
+    <!-- HTML Runner: Recent Files dialog -->
+    <string name="recent_files_dialog_title">Recent Files</string>
+    <string name="recent_files_dialog_subtitle">Files and folders you\'ve opened before. Tap one to open it again.</string>
+    <string name="recent_files_empty_state">No files opened yet.\nUse \"File\" or \"Folder\" above to open some HTML.</string>
+    <string name="recent_file_type_file">File</string>
+    <string name="recent_file_type_folder">Folder</string>
+    <string name="confirm_delete_recent_title">Remove this from Recent Files?</string>
+    <string name="confirm_delete_all_recent_title">Clear Recent Files?</string>
+    <string name="confirm_delete_all_recent_message">This only removes the list — it does not delete the actual files on your device.</string>
+
+    <!-- HTML Runner: status / errors / toasts -->
+    <string name="toast_saved">Saved.</string>
+    <string name="status_scanning_folder">Scanning folder…</string>
+    <string name="dialog_pick_html_file_title">Choose an HTML file</string>
+    <string name="error_save_file_failed">Failed to save file: %1$s</string>
+    <string name="error_open_file_failed">Failed to open file: %1$s</string>
+    <string name="error_open_folder_failed">Couldn\'t open this folder.</string>
+    <string name="error_no_html_in_folder">No .html file found in this folder.</string>
+    <string name="error_read_file_failed">Failed to read %1$s: %2$s</string>
+    <string name="error_load_page_failed">Failed to load page: %1$s</string>
+    <string name="active_source_file_format">File: %1$s  (no separate CSS/JS — use \"Folder\" if your project has separate files)</string>
+    <string name="active_source_folder_format">Folder: %1$s → %2$s</string>
+    <string name="active_source_history_format">History: %1$s</string>
+    <string name="status_running_console">"> Running…\n"</string>
+    <string name="status_console_cleared">"> Console cleared.\n"</string>
+    <string name="title_untitled_html">Untitled HTML</string>
+
+    <!-- Xpatch / LSPatch Studio -->
+    <string name="xpatch_title">LSPosed Studio</string>
+    <string name="xpatch_subtitle">Modify APK to load Xposed modules without root.</string>
+    <string name="xpatch_select_target">Select Target Application</string>
+    <string name="xpatch_target_hint">Tap to add — pick multiple apps for batch patching</string>
+    <string name="xpatch_select_module">Select Xposed Module (Optional)</string>
+    <string name="xpatch_module_hint">Tap to add — pick multiple modules to embed at once</string>
+    <string name="xpatch_configuration">Patcher Configuration</string>
+    <string name="xpatch_bypass_level">Signature Bypass Level</string>
+    <string name="xpatch_bypass_lv0">Lv0: Disabled</string>
+    <string name="xpatch_bypass_lv1">Lv1: Hook PackageManager (Java)</string>
+    <string name="xpatch_bypass_lv2">Lv2: Hook openat (libc.so) - Highly Recommended</string>
+    <string name="xpatch_bypass_lv3">Lv3: IO Redirection (deep Context spoofing)</string>
+    <string name="xpatch_bypass_lv4">Lv4: SVC/Seccomp Hook (kernel-level, ARM64 only)</string>
+    <string name="xpatch_version_override">Version Override (Optional)</string>
+    <string name="xpatch_modifying">Modifying APK...</string>
+    <string name="xpatch_build_button">BUILD MODIFIED APK</string>
+    <string name="xpatch_processing_button">PROCESSING…</string>
+    <string name="xpatch_checking_conflicts_button">CHECKING…</string>
+    <string name="xpatch_error_no_target">Please select at least one target application!</string>
+    <string name="xpatch_error_storage_permission">Please grant \'All Files Access\' to save APKs.</string>
+    <string name="xpatch_conflicts_title">Potential Conflicts Detected</string>
+    <string name="xpatch_continue_anyway">Continue Anyway</string>
+    <string name="xpatch_cancel">Cancel</string>
+    <string name="xpatch_target_selection_title">Target Selection (Batch)</string>
+    <string name="xpatch_module_selection_title">Module Selection (Multi-embed)</string>
+    <string name="xpatch_choose_installed_apps">Choose Installed Application(s)</string>
+    <string name="xpatch_choose_apk_files">Choose APK File(s)</string>
+    <string name="xpatch_selected_count_format">%1$d selected</string>
+    <string name="xpatch_batch_progress_format">App %1$d/%2$d (%3$s): %4$d%%</string>
+    <string name="xpatch_targets_selected_format">%1$d apps selected (batch mode): %2$s</string>
+    <string name="xpatch_more_suffix_format">, +%1$d more</string>
+    <string name="xpatch_mode_hint_none">Embed mode</string>
+    <string name="xpatch_mode_hint_single">Embed Mode Active (Integrated)</string>
+    <string name="xpatch_modules_selected_format">%1$d modules selected: %2$s</string>
+    <string name="xpatch_mode_hint_multi_format">Multi-Embed Mode Active (%1$d modules)</string>
+    <string name="xpatch_result_success_header_format">Success (%1$d):\n</string>
+    <string name="xpatch_result_failure_header_format">\nFailed (%1$d):\n</string>
+    <string name="xpatch_batch_complete_title">Batch Patching Complete</string>
+    <string name="xpatch_result_title">Patching Result</string>
+    <string name="xpatch_ok">OK</string>
+    <string name="xpatch_auto_install">Auto Install</string>
+    <string name="xpatch_installing_via_shizuku">Installing APK via Shizuku...</string>
+    <string name="xpatch_shizuku_install_failed_format">Shizuku install failed: %1$s</string>
+    <string name="xpatch_added">ADDED</string>
+    <string name="xpatch_select_item">SELECT</string>
+
+    <!-- Xpatch Conflict Warnings -->
+    <string name="xpatch_warning_factory_title">App already has its own appComponentFactory</string>
+    <string name="xpatch_warning_factory_detail">Original value: \"%1$s\". This will be overwritten with the LSPatch stub. If this original factory is critical (rare, but possible), the app might force-close.</string>
+    <string name="xpatch_warning_already_patched_title">This APK seems to be already patched</string>
+    <string name="xpatch_warning_already_patched_detail">Found assets/lspatch/config.json in the source APK. Patching an already patched APK usually results in an app that fails to run (nested patch).</string>
+    <string name="xpatch_warning_integrity_title">Likely uses Play Integrity / SafetyNet</string>
+    <string name="xpatch_warning_integrity_detail">This app declares features related to device integrity checks. If this app actively verifies APK signatures/authenticity with a server, the patch might be detected even with signature bypass active.</string>
+    <string name="xpatch_warning_minsdk_title">Low minSdkVersion for this app (%1$d)</string>
+    <string name="xpatch_warning_minsdk_detail">The NPatch native loader targets Android 7+ (API 24+) for Lv0-2. Lv3/Lv4 bypass requires Android 9+ (API 28+). It might still run below that, but isn\'t guaranteed.</string>
+
+    <!-- Xpatch Advanced Features -->
+    <string name="xpatch_advanced_features">Advanced Features (Optional)</string>
+    <string name="xpatch_switch_microg">MicroG Support (No Google Play)</string>
+    <string name="xpatch_switch_inject_provider">Inject ContentProvider</string>
+    <string name="xpatch_invalid_apk_format">File is not a valid APK, skipped: %1$s</string>
+    <string name="xpatch_module_not_confirmed">Not detected as Xposed module (still added): %1$s</string>
+
+    <!-- Xpatch Anti-Debug & Experimental -->
+    <string name="xpatch_switch_antidebug">Anti-Debug</string>
+    <string name="xpatch_experimental_title">⚠️ Experimental</string>
+    <string name="xpatch_experimental_warning">Experimental features may cause crashes or instability on some devices. Enable only for testing.</string>
+    <string name="xpatch_switch_hide_dl_iterate">Bypass dl_iterate_phdr</string>
+    <string name="xpatch_switch_trap_prctl">Bypass prctl</string>
+    <string name="xpatch_switch_normalize_timing">Normalize timing</string>
+
+    <!-- Experimental toggle hints -->
+    <string name="xpatch_trap_prctl_hint">⛔ Disabled: conflicts with Seccomp Level 4</string>
+    <string name="xpatch_normalize_timing_hint">⚠️ Risk: may cause lag/crash in some games</string>
+
+    <!-- ===== NEW STRINGS FOR HARDCODED TEXT ===== -->
+    <string name="splash_subtitle">All-in-one utility</string>
+    <string name="progress_title">Converting…</string>
+    <string name="progress_message">Processing your file into C++ code.\nPlease wait, do not close the app.</string>
+    <string name="search_hint">Search app or package name</string>
+    <string name="dns_public_providers">Public Providers</string>
+    <string name="tab_code">Code</string>
+    <string name="tab_preview">Preview</string>
+    <string name="tab_console">Console</string>
+    <string name="console_output_label">JavaScript console output</string>
+    <string name="console_copy">Copy Log</string>
+    <string name="console_clear">Clear</string>
+    <string name="console_initial_text">> Press RUN to see console output here.\n</string>
+    <string name="lua_encryptor_title">Lua Encryptor</string>
+    <string name="lua_encryptor_subtitle">Protect your GameGuardian scripts from being decompiled or stolen.</string>
+    <string name="lua_protection_options">Protection Options</string>
+    <string name="mlbb_title">Mole delete guest</string>
+    <string name="mlbb_subtitle">Reset guest account safely without root (only works on some devices).</string>
+    <string name="mlbb_progress_steps">Progress Steps (Follow in order)</string>
+    <string name="ping_title">Network Ping Tester</string>
+    <string name="ping_subtitle">Check latency to any server or IP address.</string>
+    <string name="device_spoof_title">Device / GPU Spoof</string>
+    <string name="device_spoof_subtitle">Profile Model &amp; GPU</string>
+    <string name="device_spoof_desc">Spoof flagship device profile to unlock high-end graphics in games</string>
+    <string name="device_spoof_off">Off</string>
+
+    <!-- Added: Native Tools hub title in drawer -->
+    <string name="native_tools_short">Native Tools</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Saat kembali (back): layar saat ini keluar ke kanan sambil fade-out -->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:interpolator/decelerate_cubic">
+    <translate
+        android:fromXDelta="0"
+        android:toXDelta="6%"
+        android:duration="260" />
+    <alpha
+        android:fromAlpha="1.0"
+        android:toAlpha="0.0"
+        android:duration="220" />
+</set>

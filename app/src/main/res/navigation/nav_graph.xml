@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <!-- Dashboard Utama -->
+    <fragment android:id="@+id/homeFragment" android:name="com.mondns.app.HomeFragment" android:label="@string/home" tools:layout="@layout/fragment_home">
+        <action android:id="@+id/action_home_to_dns" app:destination="@id/dnsFragment"  app:enterAnim="@anim/nav_enter" app:exitAnim="@anim/nav_exit" app:popEnterAnim="@anim/nav_pop_enter" app:popExitAnim="@anim/nav_pop_exit" />
+        <action android:id="@+id/action_home_to_ping" app:destination="@id/pingFragment"  app:enterAnim="@anim/nav_enter" app:exitAnim="@anim/nav_exit" app:popEnterAnim="@anim/nav_pop_enter" app:popExitAnim="@anim/nav_pop_exit" />
+        <action android:id="@+id/action_home_to_mlbb" app:destination="@id/mlbbFragment"  app:enterAnim="@anim/nav_enter" app:exitAnim="@anim/nav_exit" app:popEnterAnim="@anim/nav_pop_enter" app:popExitAnim="@anim/nav_pop_exit" />
+        <action android:id="@+id/action_home_to_luaEncryptor" app:destination="@id/luaEncryptorFragment"  app:enterAnim="@anim/nav_enter" app:exitAnim="@anim/nav_exit" app:popEnterAnim="@anim/nav_pop_enter" app:popExitAnim="@anim/nav_pop_exit" />
+        <action android:id="@+id/action_home_to_xpatch" app:destination="@id/xpatchFragment"  app:enterAnim="@anim/nav_enter" app:exitAnim="@anim/nav_exit" app:popEnterAnim="@anim/nav_pop_enter" app:popExitAnim="@anim/nav_pop_exit" />
+
+        <!-- INI ACTION YANG BIKIN ERROR TADI (Sekarang sudah dimasukkan) -->
+        <action android:id="@+id/action_home_to_apk" app:destination="@id/apkExtractorFragment"  app:enterAnim="@anim/nav_enter" app:exitAnim="@anim/nav_exit" app:popEnterAnim="@anim/nav_pop_enter" app:popExitAnim="@anim/nav_pop_exit" />
+
+        <!-- ACTION KE FILE MANAGER -->
+        <action android:id="@+id/action_home_to_fileManager" app:destination="@id/fileManagerFragment"  app:enterAnim="@anim/nav_enter" app:exitAnim="@anim/nav_exit" app:popEnterAnim="@anim/nav_pop_enter" app:popExitAnim="@anim/nav_pop_exit" />
+
+        <!-- ACTION KE NATIVE TOOLS HUB -->
+        <action android:id="@+id/action_home_to_nativeTools" app:destination="@id/nativeToolsFragment"  app:enterAnim="@anim/nav_enter" app:exitAnim="@anim/nav_exit" app:popEnterAnim="@anim/nav_pop_enter" app:popExitAnim="@anim/nav_pop_exit" />
+
+        <!-- ACTION KE HTML RUNNER -->
+        <action android:id="@+id/action_home_to_htmlRunner" app:destination="@id/htmlRunnerFragment"  app:enterAnim="@anim/nav_enter" app:exitAnim="@anim/nav_exit" app:popEnterAnim="@anim/nav_pop_enter" app:popExitAnim="@anim/nav_pop_exit" />
+
+        <!-- ACTION KE APK SIGNER -->
+        <action android:id="@+id/action_home_to_apkSigner" app:destination="@id/apkSignerFragment"  app:enterAnim="@anim/nav_enter" app:exitAnim="@anim/nav_exit" app:popEnterAnim="@anim/nav_pop_enter" app:popExitAnim="@anim/nav_pop_exit" />
+        <action android:id="@+id/action_home_to_securityScanner" app:destination="@id/securityScannerFragment"  app:enterAnim="@anim/nav_enter" app:exitAnim="@anim/nav_exit" app:popEnterAnim="@anim/nav_pop_enter" app:popExitAnim="@anim/nav_pop_exit" />
+    </fragment>
+
+    <!-- Fitur-fiturnya -->
+    <fragment android:id="@+id/dnsFragment" android:name="com.mondns.app.DnsFragment" android:label="@string/dns_changer" tools:layout="@layout/fragment_dns" />
+    <fragment android:id="@+id/pingFragment" android:name="com.mondns.app.PingFragment" android:label="@string/ping_tester" tools:layout="@layout/fragment_ping" />
+    <fragment android:id="@+id/mlbbFragment" android:name="com.mondns.app.MlbbFragment" android:label="@string/mlbb_reset" tools:layout="@layout/fragment_mlbb" />
+
+    <!-- FRAGMENT APK EXTRACTOR -->
+    <fragment android:id="@+id/apkExtractorFragment" android:name="com.mondns.app.ApkExtractorFragment" android:label="APK Extractor" tools:layout="@layout/fragment_apk_extractor" />
+
+   <!-- FRAGMENT FILE MANAGER BARU (Pastikan id ini tetap) -->
+    <fragment android:id="@+id/fileManagerFragment" android:name="com.mondns.app.FileManagerFragment" android:label="@string/file_manager" tools:layout="@layout/fragment_file_manager">
+        <!-- Tambahkan Action dari File Manager ke Converter -->
+        <action android:id="@+id/action_fileManager_to_converter" app:destination="@id/devConverterFragment"  app:enterAnim="@anim/nav_enter" app:exitAnim="@anim/nav_exit" app:popEnterAnim="@anim/nav_pop_enter" app:popExitAnim="@anim/nav_pop_exit" />
+    </fragment>
+
+    <!-- 🌟 FRAGMENT CONVERTER BARU (Tambahkan ini sebelum tag penutup </navigation>) 🌟 -->
+    <fragment android:id="@+id/devConverterFragment" android:name="com.mondns.app.DevConverterFragment" android:label="Converter" tools:layout="@layout/fragment_dev_converter">
+        <argument android:name="filePath" app:argType="string" android:defaultValue=""/>
+    </fragment>
+
+    <!-- 🌟 NATIVE TOOLS: hub + dua fitur baru (.so Inspector & Crash Analyzer) 🌟 -->
+    <fragment android:id="@+id/nativeToolsFragment" android:name="com.mondns.app.NativeToolsFragment" android:label="@string/native_tools_title" tools:layout="@layout/fragment_native_tools">
+        <action android:id="@+id/action_nativeTools_to_soInspector" app:destination="@id/soInspectorFragment"  app:enterAnim="@anim/nav_enter" app:exitAnim="@anim/nav_exit" app:popEnterAnim="@anim/nav_pop_enter" app:popExitAnim="@anim/nav_pop_exit" />
+        <action android:id="@+id/action_nativeTools_to_crashAnalyzer" app:destination="@id/crashAnalyzerFragment"  app:enterAnim="@anim/nav_enter" app:exitAnim="@anim/nav_exit" app:popEnterAnim="@anim/nav_pop_enter" app:popExitAnim="@anim/nav_pop_exit" />
+    </fragment>
+
+    <fragment android:id="@+id/soInspectorFragment" android:name="com.mondns.app.SoInspectorFragment" android:label="@string/so_inspector_title" tools:layout="@layout/fragment_so_inspector" />
+
+    <fragment android:id="@+id/crashAnalyzerFragment" android:name="com.mondns.app.CrashAnalyzerFragment" android:label="@string/crash_analyzer_title" tools:layout="@layout/fragment_crash_analyzer" />
+    <!-- LUA ENCRYPTOR BARU -->
+    <fragment android:id="@+id/luaEncryptorFragment" android:name="com.mondns.app.LuaEncryptorFragment" android:label="Lua Encryptor" tools:layout="@layout/fragment_lua_encryptor" />
+
+    <!-- HTML RUNNER: editor sederhana + preview + console log -->
+    <fragment android:id="@+id/htmlRunnerFragment" android:name="com.mondns.app.HtmlRunnerFragment" android:label="@string/html_runner_title" tools:layout="@layout/fragment_html_runner" />
+    <!-- Halaman Xpatch Baru -->
+    <fragment android:id="@+id/xpatchFragment" android:name="com.mondns.app.XpatchFragment" android:label="LSPosed" tools:layout="@layout/fragment_xpatch" />
+
+    <!-- APK SIGNER: generate keystore (PKCS12) + sign APK pakai apksig -->
+    <fragment android:id="@+id/apkSignerFragment" android:name="com.mondns.app.ApkSignerFragment" android:label="@string/apk_signer_title" tools:layout="@layout/fragment_apk_signer" />
+    <fragment android:id="@+id/securityScannerFragment" android:name="com.mondns.app.SecurityScannerFragment" android:label="@string/security_scanner_title" tools:layout="@layout/fragment_security_scanner" />
+
+</navigation>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base diagonal gradient: deep slate to indigo, matches splash/console identity -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="linear"
+                android:angle="135"
+                android:startColor="#0F172A"
+                android:centerColor="#151B33"
+                android:endColor="#1E1B4B" />
+        </shape>
+    </item>
+
+    <!-- Soft cyan glow, top-left (echoes console_accent_cyan) -->
+    <item android:width="220dp" android:height="220dp" android:left="-70dp" android:top="-90dp" android:gravity="top|start">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="110dp"
+                android:startColor="#3322D3EE"
+                android:endColor="#0022D3EE" />
+        </shape>
+    </item>
+
+    <!-- Soft violet glow, bottom-right (echoes console_accent_violet) -->
+    <item android:width="200dp" android:height="200dp" android:right="-60dp" android:bottom="-80dp" android:gravity="bottom|end">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="100dp"
+                android:startColor="#2A8B5CF6"
+                android:endColor="#008B5CF6" />
+        </shape>
+    </item>
+
+    <!-- Bottom scrim so text stays readable regardless of glow placement -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="linear"
+                android:angle="90"
+                android:startColor="#00000000"
+                android:centerColor="#1A000000"
+                android:endColor="#4D000000" />
+        </shape>
+    </item>
+</layer-list>

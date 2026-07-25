@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingVertical="10dp"
+    android:paddingHorizontal="4dp">
+
+    <TextView
+        android:id="@+id/tvSymbolName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:fontFamily="monospace"
+        android:textColor="?attr/colorOnSurface"
+        android:maxLines="1"
+        android:ellipsize="middle"
+        tools:text="JNI_OnLoad"/>
+
+    <TextView
+        android:id="@+id/tvSymbolMeta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="11sp"
+        android:fontFamily="monospace"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:layout_marginTop="2dp"
+        tools:text="0x0001a2b3 · size 128"/>
+</LinearLayout>

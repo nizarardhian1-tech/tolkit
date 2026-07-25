@@ -1,0 +1,188 @@
+:root {
+  --bg: #0D1117;
+  --bg-toolbar: #161B22;
+  --border: #30363D;
+  --text: #E6EDF3;
+  --text-dim: #8B949E;
+  --gutter: #586069;
+  --accent: #58A6FF;
+  --font-size: 14px;
+
+  --tok-comment: #6A737D;
+  --tok-string: #A5D6A7;
+  --tok-tag: #FF8A65;
+  --tok-attr: #82AAFF;
+  --tok-number: #F78C6C;
+  --tok-keyword: #C792EA;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  overflow: hidden;
+  font-family: -apple-system, Roboto, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Toolbar ---------- */
+#toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0 6px;
+  background: var(--bg-toolbar);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+#toolbar::-webkit-scrollbar { display: none; }
+
+.tbtn {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 32px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #1F242C;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.tbtn.wide { width: 34px; font-size: 12.5px; }
+.tbtn:active { background: #2A313B; }
+
+.sep {
+  flex: 0 0 auto;
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  margin: 0 4px;
+}
+
+/* ---------- Find & Replace bar ---------- */
+#findbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  background: var(--bg-toolbar);
+  border-bottom: 1px solid var(--border);
+}
+#findbar.hidden { display: none; }
+
+#findInput, #replaceInput {
+  flex: 1 1 120px;
+  min-width: 90px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  padding: 0 10px;
+  font-size: 12.5px;
+  font-family: monospace;
+}
+
+.fbtn {
+  flex: 0 0 auto;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #1F242C;
+  color: var(--accent);
+  font-size: 11.5px;
+}
+.fbtn.close { color: var(--text-dim); width: 32px; padding: 0; }
+
+#findStatus {
+  width: 100%;
+  font-size: 10.5px;
+  color: var(--text-dim);
+}
+
+/* ---------- Editor area ---------- */
+#editorWrap {
+  position: relative;
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+#gutter {
+  flex: 0 0 auto;
+  min-width: 34px;
+  padding: 16px 8px 16px 10px;
+  text-align: right;
+  font-family: "Menlo", "Courier New", monospace;
+  font-size: var(--font-size);
+  line-height: 1.5;
+  color: var(--gutter);
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  overflow: hidden;
+  white-space: pre;
+  user-select: none;
+}
+
+#highlightLayer, #codeArea {
+  position: absolute;
+  top: 0;
+  left: 44px;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 16px;
+  border: 0;
+  font-family: "Menlo", "Courier New", monospace;
+  font-size: var(--font-size);
+  line-height: 1.5;
+  white-space: pre;
+  overflow: auto;
+  tab-size: 4;
+}
+
+#highlightLayer {
+  color: var(--text);
+  pointer-events: none;
+  background: transparent;
+}
+#highlightLayer pre, #highlightLayer code {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  white-space: inherit;
+  background: transparent;
+}
+
+#codeArea {
+  resize: none;
+  background: transparent;
+  color: transparent;
+  caret-color: var(--text);
+  outline: none;
+  z-index: 1;
+}
+#codeArea::placeholder { color: var(--gutter); -webkit-text-fill-color: var(--gutter); }
+
+.tok-comment { color: var(--tok-comment); font-style: italic; }
+.tok-string  { color: var(--tok-string); }
+.tok-tag     { color: var(--tok-tag); font-weight: 600; }
+.tok-attr    { color: var(--tok-attr); }
+.tok-number  { color: var(--tok-number); }
+.tok-keyword { color: var(--tok-keyword); font-weight: 600; }

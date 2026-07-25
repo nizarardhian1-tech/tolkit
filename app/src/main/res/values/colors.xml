@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Warna Dasar -->
+    <color name="colorPrimary">#0288D1</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorSuccess">#2E7D32</color>
+    <color name="colorError">#D32F2F</color>
+
+    <!-- Glassmorphism Tokens - Light -->
+    <color name="glass_surface">#FFFFFF</color>
+    <color name="glass_surface_container">#F1F5F9</color>
+    <color name="glass_surface_variant">#E2E8F0</color>
+    <color name="glass_stroke">#CBD5E1</color>
+    <color name="glass_highlight">#40FFFFFF</color>
+    <color name="glass_primary_container">#DBEAFE</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#64748B</color>
+    <color name="text_hint">#94A3B8</color>
+
+    <!-- Gradient untuk ikon modul (tetap konsisten) -->
+    <color name="gradient_blue_light">#29B6F6</color>
+    <color name="gradient_blue_mid">#0288D1</color>
+    <color name="gradient_blue_dark">#01579B</color>
+
+    <!-- Warna icon per tipe file -->
+    <color name="file_color_folder">#F5A623</color>
+    <color name="file_color_archive">#FB8C00</color>
+    <color name="file_color_image">#8E24AA</color>
+    <color name="file_color_video">#D81B60</color>
+    <color name="file_color_audio">#00897B</color>
+    <color name="file_color_pdf">#E53935</color>
+    <color name="file_color_doc">#1976D2</color>
+    <color name="file_color_code">#5E35B1</color>
+    <color name="file_color_apk">#43A047</color>
+    <color name="file_color_default">#9E9E9E</color>
+
+    <!-- Card Shadow -->
+    <color name="card_shadow_color">#2A101B33</color>
+
+    <!-- Aksen per modul -->
+    <color name="accent_dns_start">#29B6F6</color>
+    <color name="accent_dns_end">#01579B</color>
+    <color name="accent_ping_start">#26C6DA</color>
+    <color name="accent_ping_end">#00695C</color>
+    <color name="accent_mlbb_start">#FF8A50</color>
+    <color name="accent_mlbb_end">#D84315</color>
+    <color name="accent_apk_start">#66BB6A</color>
+    <color name="accent_apk_end">#2E7D32</color>
+    <color name="accent_files_start">#FFCA28</color>
+    <color name="accent_files_end">#F57F17</color>
+    <color name="accent_converter_start">#7C4DFF</color>
+    <color name="accent_converter_end">#4527A0</color>
+    <color name="accent_native_start">#78909C</color>
+    <color name="accent_native_end">#37474F</color>
+    <color name="accent_lua_start">#EC407A</color>
+    <color name="accent_lua_end">#AD1457</color>
+    <color name="accent_html_start">#FF7043</color>
+    <color name="accent_html_end">#D84315</color>
+
+    <!-- Console colors - Light -->
+    <color name="console_bg">#F8FAFC</color>
+    <color name="console_surface">#FFFFFF</color>
+    <color name="console_border">#E2E8F0</color>
+    <color name="console_accent_cyan">#0288D1</color>
+    <color name="console_accent_violet">#7C4DFF</color>
+    <color name="console_text_primary">#0F172A</color>
+    <color name="console_text_dim">#64748B</color>
+    <color name="console_text_success">#2E7D32</color>
+    <color name="console_text_warning">#F57C00</color>
+    <color name="console_text_error">#D32F2F</color>
+</resources>

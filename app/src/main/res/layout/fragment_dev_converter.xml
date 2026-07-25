@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/converterScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="?android:colorBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Title Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/conv_title"
+            android:textSize="22sp"
+            android:fontFamily="@font/font_inter_bold"
+            android:textColor="?attr/colorOnSurface"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/conv_subtitle"
+            android:textSize="13sp"
+            android:layout_marginTop="2dp"
+            android:textColor="?attr/colorOnSurfaceVariant"/>
+
+        <!-- Mode Toggle Tabs -->
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleConverterMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:singleSelection="true"
+            app:selectionRequired="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tabFileConverter"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="File Converter"
+                android:textSize="13sp"
+                android:fontFamily="@font/font_inter_semibold"
+                app:icon="@drawable/ic_open_file"
+                app:iconGravity="textStart"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tabTextCrypto"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Text Crypto &amp; Code"
+                android:textSize="13sp"
+                android:fontFamily="@font/font_inter_semibold"
+                app:icon="@drawable/ic_code_convert"
+                app:iconGravity="textStart"/>
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <!-- =================================================================== -->
+        <!-- CONTAINER 1: FILE CONVERTER TAB                                     -->
+        <!-- =================================================================== -->
+        <LinearLayout
+            android:id="@+id/containerFileConverter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <!-- Input File Selector Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardFileSelect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke"
+                app:cardElevation="0dp"
+                android:clickable="true"
+                android:focusable="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/ivFileIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_code_convert"
+                        app:tint="?attr/colorPrimary"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvFileName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/conv_tap_to_select"
+                            android:fontFamily="@font/font_inter_semibold"
+                            android:textSize="15sp"
+                            android:textColor="?attr/colorOnSurface"/>
+
+                        <TextView
+                            android:id="@+id/tvFileSize"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/conv_supports_any"
+                            android:textSize="11sp"
+                            android:textColor="?attr/colorOnSurfaceVariant"
+                            android:layout_marginTop="2dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Output Format Card -->
+            <LinearLayout
+                android:id="@+id/sectionFormat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/conv_format_title"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/font_inter_semibold"
+                    android:textColor="?attr/colorPrimary"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardBackgroundColor="@color/glass_surface_container"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/glass_stroke">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <RadioGroup
+                            android:id="@+id/rgFormat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/rbHexArray"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/conv_format_hex"
+                                android:textSize="13sp"
+                                android:textColor="?attr/colorOnSurface"
+                                android:paddingVertical="6dp"
+                                android:checked="true"/>
+
+                            <RadioButton
+                                android:id="@+id/rbBase64Header"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/conv_format_base64_header"
+                                android:textSize="13sp"
+                                android:textColor="?attr/colorOnSurface"
+                                android:paddingVertical="6dp"/>
+
+                            <RadioButton
+                                android:id="@+id/rbBase64Text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/conv_format_base64_text"
+                                android:textSize="13sp"
+                                android:textColor="?attr/colorOnSurface"
+                                android:paddingVertical="6dp"/>
+                        </RadioGroup>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            app:boxCornerRadiusTopStart="12dp"
+                            app:boxCornerRadiusTopEnd="12dp"
+                            app:boxCornerRadiusBottomStart="12dp"
+                            app:boxCornerRadiusBottomEnd="12dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etArrayName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/conv_array_name_hint"
+                                android:text="embedded_data"
+                                android:textColor="?attr/colorOnSurface"
+                                android:inputType="textNoSuggestions"
+                                android:textSize="13sp"
+                                android:maxLines="1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Encryption Card -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/conv_encrypt_section_title"
+                android:textSize="13sp"
+                android:fontFamily="@font/font_inter_semibold"
+                android:textColor="?attr/colorPrimary"
+                android:layout_marginTop="16dp"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardEncryptOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke"
+                app:cardElevation="0dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <RadioGroup
+                        android:id="@+id/rgEncryptMode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/rbEncryptOff"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/conv_encrypt_mode_off"
+                            android:textSize="13sp"
+                            android:textColor="?attr/colorOnSurface"
+                            android:paddingVertical="4dp"
+                            android:checked="true"/>
+
+                        <RadioButton
+                            android:id="@+id/rbEncryptThenConvert"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/conv_encrypt_mode_then_convert"
+                            android:textSize="13sp"
+                            android:textColor="?attr/colorOnSurface"
+                            android:paddingVertical="4dp"/>
+
+                        <RadioButton
+                            android:id="@+id/rbEncryptOnly"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/conv_encrypt_mode_only"
+                            android:textSize="13sp"
+                            android:textColor="?attr/colorOnSurface"
+                            android:paddingVertical="4dp"/>
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/tvEncryptHint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/conv_encrypt_first_hint"
+                        android:textSize="11sp"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:visibility="gone"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Progress Bar -->
+            <LinearLayout
+                android:id="@+id/layoutProgress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp"
+                android:visibility="gone">
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:indicatorColor="?attr/colorPrimary"
+                    app:trackColor="?attr/colorSurfaceVariant"
+                    android:max="100"
+                    android:progress="0"/>
+
+                <TextView
+                    android:id="@+id/tvProgressLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/conv_running_background"
+                    android:textSize="12sp"
+                    android:textColor="?attr/colorOnSurfaceVariant"/>
+            </LinearLayout>
+
+            <!-- Start Conversion Button -->
+            <RelativeLayout
+                android:id="@+id/btnConvert"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/bg_gradient_button"
+                android:clickable="true"
+                android:focusable="true">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/conv_button_start"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="@font/font_inter_bold"
+                    android:textSize="15sp"
+                    android:letterSpacing="0.03"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!-- =================================================================== -->
+        <!-- CONTAINER 2: TEXT CRYPTO & CODE STUDIO TAB                          -->
+        <!-- =================================================================== -->
+        <LinearLayout
+            android:id="@+id/containerTextCrypto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <!-- Input Text Card -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Input Text / URL / Secret String"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusBottomEnd="16dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etCryptoInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minLines="3"
+                    android:maxLines="6"
+                    android:textColor="?attr/colorOnSurface"
+                    android:fontFamily="monospace"
+                    android:textSize="13sp"
+                    android:inputType="textMultiLine"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Algorithm Selection Card -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Algorithm &amp; Mode"
+                android:textSize="13sp"
+                android:fontFamily="@font/font_inter_semibold"
+                android:textColor="?attr/colorPrimary"
+                android:layout_marginTop="16dp"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <RadioGroup
+                        android:id="@+id/rgCryptoAlgorithm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/rbXorObfuscator"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="XOR String Obfuscator (Generates C++ / Kotlin Code)"
+                            android:textSize="12.5sp"
+                            android:textColor="?attr/colorOnSurface"
+                            android:paddingVertical="4dp"
+                            android:checked="true"/>
+
+                        <RadioButton
+                            android:id="@+id/rbAes256"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="AES-256 Encryption (CTR Mode + Base64)"
+                            android:textSize="12.5sp"
+                            android:textColor="?attr/colorOnSurface"
+                            android:paddingVertical="4dp"/>
+
+                        <RadioButton
+                            android:id="@+id/rbBase64"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Base64 Encoder / Decoder"
+                            android:textSize="12.5sp"
+                            android:textColor="?attr/colorOnSurface"
+                            android:paddingVertical="4dp"/>
+
+                        <RadioButton
+                            android:id="@+id/rbUrlEncode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="URL Encoder / Decoder"
+                            android:textSize="12.5sp"
+                            android:textColor="?attr/colorOnSurface"
+                            android:paddingVertical="4dp"/>
+
+                        <RadioButton
+                            android:id="@+id/rbHashGen"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hash Generator (MD5 / SHA-1 / SHA-256)"
+                            android:textSize="12.5sp"
+                            android:textColor="?attr/colorOnSurface"
+                            android:paddingVertical="4dp"/>
+                    </RadioGroup>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCryptoKey"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="Custom Key / Password (e.g. 0x5A or SecretKey)"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCryptoKey"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="0x5A"
+                            android:textColor="?attr/colorOnSurface"
+                            android:maxLines="1"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Action Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCryptoEncrypt"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    android:text="ENCRYPT / GENERATE"
+                    android:fontFamily="@font/font_inter_bold"
+                    android:textSize="12sp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCryptoDecrypt"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    android:text="DECRYPT"
+                    android:fontFamily="@font/font_inter_semibold"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <!-- Output Display Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardCryptoOutput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/glass_surface_container"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/glass_stroke"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/tvCryptoOutputHeader"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Generated Output"
+                            android:textSize="13sp"
+                            android:fontFamily="@font/font_inter_semibold"
+                            android:textColor="?attr/colorPrimary"/>
+
+                        <TextView
+                            android:id="@+id/btnCopyCryptoOutput"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="COPY ALL"
+                            android:textColor="?attr/colorPrimary"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/font_inter_bold"
+                            android:padding="6dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:focusable="true"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvCryptoResult"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="monospace"
+                        android:textSize="12sp"
+                        android:textColor="?attr/colorOnSurface"
+                        android:lineSpacingExtra="3dp"
+                        android:textIsSelectable="true"
+                        tools:text="static const uint8_t ENCRYPTED_STR[] = { ... };"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- Bottom Spacer -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

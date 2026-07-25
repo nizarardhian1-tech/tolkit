@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground">
+
+    <!-- Storage Usage Bar Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/storageCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="18dp"
+        app:cardBackgroundColor="@color/glass_surface_container"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/glass_stroke"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:id="@+id/storageBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="10dp">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_storage_modern"
+                app:tint="?attr/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tvStorageInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="…"
+                android:textSize="12sp"
+                android:fontFamily="@font/font_inter_semibold"
+                android:textColor="?attr/colorOnSurface" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progressStorage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                app:trackThickness="6dp"
+                app:trackCornerRadius="6dp"
+                app:indicatorColor="?attr/colorPrimary"
+                app:trackColor="?attr/colorSurfaceVariant"
+                android:max="100"
+                android:progress="0" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Header Layout (Breadcrumb & Action Buttons) -->
+    <FrameLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/storageCard"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/bg_header_modern">
+
+        <LinearLayout
+            android:id="@+id/normalHeaderRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="6dp"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/btnUp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_back_modern"
+                android:padding="10dp"
+                app:tint="?attr/colorOnSurfaceVariant" />
+
+            <HorizontalScrollView
+                android:id="@+id/breadcrumbScroll"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/breadcrumbContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical" />
+            </HorizontalScrollView>
+
+            <FrameLayout
+                android:id="@+id/btnShizuku"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="2dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/bg_shizuku_badge" />
+
+                <View
+                    android:id="@+id/shizukuStatusDot"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_gravity="top|end"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shape_status_dot" />
+            </FrameLayout>
+
+            <ImageButton
+                android:id="@+id/btnSearchToggle"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_search_modern"
+                android:padding="10dp"
+                app:tint="?attr/colorOnSurfaceVariant" />
+
+            <ImageButton
+                android:id="@+id/btnSort"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_sort_modern"
+                android:padding="10dp"
+                app:tint="?attr/colorOnSurfaceVariant" />
+
+            <ImageButton
+                android:id="@+id/btnNewFolder"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_add_folder_modern"
+                android:padding="10dp"
+                app:tint="?attr/colorOnSurfaceVariant" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/selectionHeaderRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="6dp"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+
+            <ImageButton
+                android:id="@+id/btnCloseSelection"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_close_modern"
+                android:padding="10dp"
+                app:tint="?attr/colorOnSurfaceVariant" />
+
+            <TextView
+                android:id="@+id/tvSelectionCount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="0"
+                android:textSize="14sp"
+                android:fontFamily="@font/font_inter_bold"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+            <ImageButton
+                android:id="@+id/btnMoreActions"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_info_modern"
+                android:padding="10dp"
+                android:visibility="gone"
+                app:tint="?attr/colorOnSurfaceVariant" />
+
+            <ImageButton
+                android:id="@+id/btnSelectAll"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_select_all_modern"
+                android:padding="10dp"
+                app:tint="?attr/colorOnSurfaceVariant" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Input Cari Nama File -->
+    <LinearLayout
+        android:id="@+id/searchInputRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headerLayout"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="4dp"
+        android:background="@drawable/bg_glass_pill"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:hint="@string/fm_search_name_hint"
+            android:textColor="?attr/colorOnSurface"
+            android:inputType="text"
+            android:imeOptions="actionSearch"
+            android:maxLines="1"
+            android:fontFamily="@font/font_inter_regular"
+            android:textSize="13sp"
+            android:background="@null"
+            android:paddingHorizontal="8dp" />
+    </LinearLayout>
+
+    <!-- Filter Dropdown Bar -->
+    <LinearLayout
+        android:id="@+id/filterRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchInputRow"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:gravity="center_vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFilterOptions"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:text="Tampilkan: Semua File"
+            android:textSize="12sp"
+            android:fontFamily="@font/font_inter_medium"
+            android:textColor="?attr/colorPrimary"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingHorizontal="14dp"
+            app:cornerRadius="12dp"
+            app:backgroundTint="@color/glass_primary_container"
+            app:icon="@android:drawable/arrow_down_float"
+            app:iconTint="?attr/colorPrimary"
+            app:iconGravity="textEnd"
+            app:iconSize="14dp" />
+    </LinearLayout>
+
+    <!-- Search Action Bar -->
+    <LinearLayout
+        android:id="@+id/searchActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/filterRow"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="8dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvSearchHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/fm_search_hint"
+            android:textSize="12sp"
+            android:fontFamily="@font/font_inter_regular"
+            android:textColor="?attr/colorOnSurfaceVariant" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/font_inter_semibold"
+            android:text="@string/fm_search_button" />
+    </LinearLayout>
+
+    <!-- Main File List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFiles"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/searchActionBar"
+        android:layout_above="@+id/bottomActionPanel"
+        android:clipToPadding="false"
+        android:paddingBottom="80dp" />
+
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/fm_folder_empty"
+        android:fontFamily="@font/font_inter_medium"
+        android:visibility="gone"
+        android:textColor="?attr/colorOnSurfaceVariant"/>
+
+    <!-- Bottom Action Floating Panel -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bottomActionPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="24dp"
+        app:cardBackgroundColor="@color/glass_surface_container"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/glass_stroke"
+        app:cardElevation="6dp"
+        android:visibility="gone">
+
+        <!-- Mode Select (Rename/Move/Copy/Delete) -->
+        <LinearLayout
+            android:id="@+id/layoutSelectMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="6dp"
+            android:visibility="visible">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRename"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:fontFamily="@font/font_inter_semibold"
+                android:text="@string/fm_rename" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMove"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/font_inter_semibold"
+                android:text="@string/fm_move" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCopy"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/font_inter_semibold"
+                android:text="@string/fm_copy" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDelete"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/font_inter_semibold"
+                android:textColor="?attr/colorError"
+                android:text="@string/fm_delete" />
+        </LinearLayout>
+
+        <!-- Mode Paste (Cancel/Paste) -->
+        <LinearLayout
+            android:id="@+id/layoutPasteMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="6dp"
+            android:visibility="gone">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancel"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/font_inter_semibold"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:text="@string/fm_cancel" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPaste"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/font_inter_bold"
+                android:text="@string/fm_paste_here" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

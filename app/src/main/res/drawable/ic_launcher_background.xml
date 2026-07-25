@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Disesuaikan agar senada / seamless dengan warna dasar icon baru (near-black navy),
+     supaya tidak ada "cincin" warna yang kelihatan di balik foreground saat mask
+     adaptive icon (circle/squircle/rounded-square) memotong sebagian konten. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#070A12"/>
+</shape>

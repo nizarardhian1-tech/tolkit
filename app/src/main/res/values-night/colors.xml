@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Warna Dasar - Dark -->
+    <color name="colorPrimary">#38BDF8</color>
+    <color name="colorOnPrimary">#0F172A</color>
+    <color name="colorSuccess">#4ADE80</color>
+    <color name="colorError">#EF4444</color>
+
+    <!-- Glassmorphism Tokens - Dark -->
+    <color name="glass_surface">#12182A</color>
+    <color name="glass_surface_container">#1A2238</color>
+    <color name="glass_surface_variant">#2C3A5E</color>
+    <color name="glass_stroke">#2C3A5E</color>
+    <color name="glass_highlight">#40FFFFFF</color>
+    <color name="glass_primary_container">#1A2A4A</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#94A3B8</color>
+    <color name="text_hint">#64748B</color>
+
+    <!-- Sisa warna sama seperti light, hanya override yang perlu -->
+    <color name="gradient_blue_light">#38BDF8</color>
+    <color name="gradient_blue_mid">#0284C7</color>
+    <color name="gradient_blue_dark">#0369A1</color>
+
+    <!-- File colors - Dark -->
+    <color name="file_color_folder">#FBBF24</color>
+    <color name="file_color_archive">#F97316</color>
+    <color name="file_color_image">#C084FC</color>
+    <color name="file_color_video">#F472B6</color>
+    <color name="file_color_audio">#2DD4BF</color>
+    <color name="file_color_pdf">#F87171</color>
+    <color name="file_color_doc">#60A5FA</color>
+    <color name="file_color_code">#A78BFA</color>
+    <color name="file_color_apk">#4ADE80</color>
+    <color name="file_color_default">#94A3B8</color>
+
+    <color name="card_shadow_color">#40000000</color>
+
+    <!-- Console colors - Dark -->
+    <color name="console_bg">#0A0E17</color>
+    <color name="console_surface">#12182A</color>
+    <color name="console_border">#2C3A5E</color>
+    <color name="console_accent_cyan">#22D3EE</color>
+    <color name="console_accent_violet">#8B5CF6</color>
+    <color name="console_text_primary">#E2F3FF</color>
+    <color name="console_text_dim">#6B84A8</color>
+    <color name="console_text_success">#34D399</color>
+    <color name="console_text_warning">#FBBF24</color>
+    <color name="console_text_error">#F87171</color>
+</resources>

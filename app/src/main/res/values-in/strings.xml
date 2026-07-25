@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MonToolkit</string>
+    <string name="nav_header_subtitle">Utilitas Android All-in-One</string>
+    <string name="home">Beranda</string>
+    <string name="dns_changer">DNS Secure</string>
+    <string name="ping_tester">Network Check</string>
+    <string name="mlbb_reset">MLBB Guest Reset</string>
+    <string name="apk_extractor">App Extractor</string>
+    <string name="file_manager">File Manager</string>
+    <string name="html_runner_title">HTML Runner</string>
+    <string name="apk_signer_title">APK Signer</string>
+
+    <!-- home subtitles -->
+    <string name="subtitle_dns">Privasi &amp; proteksi DNS</string>
+    <string name="subtitle_ping">Uji latensi &amp; kestabilan koneksi</string>
+    <string name="subtitle_mlbb">Reset akun guest tanpa root</string>
+    <string name="subtitle_apk">Ekstrak &amp; cadangkan APK terpasang</string>
+    <string name="subtitle_html_runner">Uji &amp; jalankan kode HTML/JS</string>
+    <string name="subtitle_file">Pengelola berkas &amp; akses Scoped Storage</string>
+    <string name="subtitle_apk_signer">Generate keystore &amp; sign APK</string>
+
+    <!-- APK Signer -->
+    <string name="apk_signer_section_generate">Generate Keystore Baru</string>
+    <string name="apk_signer_keystore_name">Nama file keystore</string>
+    <string name="apk_signer_alias">Alias key</string>
+    <string name="apk_signer_password">Password</string>
+    <string name="apk_signer_common_name">Nama sertifikat (CN)</string>
+    <string name="apk_signer_btn_generate">Generate Keystore</string>
+    <string name="apk_signer_section_sign">Sign APK</string>
+    <string name="apk_signer_pick_apk">Pilih APK</string>
+    <string name="apk_signer_pick_apk_hint">Belum ada APK dipilih</string>
+    <string name="apk_signer_pick_keystore">Pilih Keystore</string>
+    <string name="apk_signer_pick_keystore_hint">Belum ada keystore dipilih</string>
+    <string name="apk_signer_output_name">Nama APK hasil sign</string>
+    <string name="apk_signer_btn_sign">Sign APK</string>
+    <string name="apk_signer_no_keystore">Generate atau pilih keystore dulu</string>
+    <string name="apk_signer_no_apk">Pilih file APK dulu</string>
+    <string name="apk_signer_generating">Membuat keystore\u2026</string>
+    <string name="apk_signer_signing">Menandatangani APK\u2026</string>
+    <string name="apk_signer_generate_success">Keystore berhasil dibuat: %1$s</string>
+    <string name="apk_signer_generate_failed">Gagal membuat keystore: %1$s</string>
+    <string name="apk_signer_sign_success">APK berhasil ditandatangani: %1$s</string>
+    <string name="apk_signer_sign_failed">Gagal menandatangani APK: %1$s</string>
+    <string name="apk_signer_jks_hint">Format .jks lama belum didukung — generate keystore baru di atas, atau pilih file .p12/.keystore (PKCS12).</string>
+
+    <!-- APK Signer: password generate & advanced -->
+    <string name="apk_signer_password_generate">🎲 Generate Password Acak</string>
+    <string name="apk_signer_advanced_settings">Advanced Settings</string>
+    <string name="apk_signer_key_size">Key Size</string>
+    <string name="apk_signer_org_name">Organization Name</string>
+    <string name="apk_signer_org_unit">Organization Unit</string>
+    <string name="apk_signer_city">City</string>
+    <string name="apk_signer_state">State/Province</string>
+    <string name="apk_signer_country_code">Country Code</string>
+    <string name="apk_signer_optional_hint">Semua field di bawah opsional — cuma metadata di sertifikat, nggak ngaruh ke apakah APK bisa jalan.</string>
+    <string name="apk_signer_v3_title">Signature V3</string>
+    <string name="apk_signer_v3_subtitle">Direkomendasikan untuk Android 9+</string>
+    <string name="apk_signer_v4_title">Signature V4</string>
+    <string name="apk_signer_v4_subtitle">Untuk update inkremental di Android 11+ (hasil file .idsig terpisah)</string>
+    <string name="apk_signer_alignment_title">Alignment (zip-align)</string>
+    <string name="apk_signer_alignment_subtitle">Otomatis — sudah bagian dari proses signing, nggak perlu langkah manual</string>
+
+    <!-- Security Scanner -->
+    <string name="security_scanner_title">Security Scanner</string>
+    <string name="subtitle_security_scanner">Scan APK: signing, permission, secrets</string>
+    <string name="security_scanner_pick_apk_hint">Belum ada APK dipilih</string>
+    <string name="security_scanner_btn_scan">Scan APK</string>
+    <string name="security_scanner_scanning">Nge-scan APK…</string>
+    <string name="security_scanner_section_signing">Info Signing</string>
+    <string name="security_scanner_section_permissions">Permission Berbahaya</string>
+    <string name="security_scanner_section_secrets">Kemungkinan Hardcoded Secret</string>
+    <string name="security_scanner_section_network">URL &amp; IP Address</string>
+    <string name="security_scanner_section_crypto">Indikasi Crypto Lemah</string>
+    <string name="security_scanner_none_found">Nggak ketemu</string>
+    <string name="security_scanner_disclaimer">Ini heuristik pattern-matching — bukan vonis keamanan mutlak. False positive/negative tetap mungkin.</string>
+    <string name="security_scanner_btn_export">Export Laporan</string>
+    <string name="security_scanner_export_success">Laporan tersimpan: %1$s</string>
+
+    <!-- Categories -->
+    <string name="category_network">Jaringan &amp; Konektivitas</string>
+    <string name="category_modding">Modifikasi &amp; Reverse Tools</string>
+    <string name="category_utilities">Alat &amp; Utilitas Sistem</string>
+    <!-- File Manager -->
+    <string name="fm_internal">Internal</string>
+    <string name="fm_folder_empty">Folder kosong</string>
+    <string name="fm_no_results_for">Tidak ada hasil untuk \"%1$s\"</string>
+    <string name="fm_no_search_results">Tidak ada file ditemukan</string>
+    <string name="fm_files_found">%1$d file ditemukan</string>
+    <string name="fm_searching_title">Mencari…</string>
+    <string name="fm_searching_message">Memindai seluruh Internal Storage, mohon tunggu.</string>
+    <string name="fm_search_hint">Tekan CARI untuk mencari semua file %1$s di seluruh Internal Storage</string>
+    <string name="fm_search_button">CARI</string>
+    <string name="fm_search_name_hint">Cari nama file…</string>
+    <string name="fm_waiting_search">Menunggu pencarian…</string>
+    <string name="fm_press_search_button">Tekan tombol CARI di atas</string>
+    <string name="fm_selected_count">%1$d dipilih</string>
+    <string name="fm_processing_title">Memproses</string>
+    <string name="fm_please_wait">Mohon tunggu…</string>
+    <string name="fm_items_copied">%1$d item disalin</string>
+    <string name="fm_items_moved">%1$d item dipindah</string>
+    <string name="fm_delete_title">Hapus File</string>
+    <string name="fm_delete_confirm">Yakin ingin menghapus %1$d item?</string>
+    <string name="fm_delete">HAPUS</string>
+    <string name="fm_cancel">BATAL</string>
+    <string name="fm_deleted_success">Berhasil dihapus</string>
+    <string name="fm_new_folder_title">Folder Baru</string>
+    <string name="fm_folder_name_hint">Nama folder</string>
+    <string name="fm_create">BUAT</string>
+    <string name="fm_folder_create_failed">Gagal membuat folder</string>
+    <string name="fm_grant_access">Mohon berikan izin All Files Access dulu.</string>
+    <string name="fm_open_coming_soon">Buka file segera hadir!</string>
+    <string name="fm_open_with">Buka dengan</string>
+    <string name="fm_no_app_to_open">Tidak ada aplikasi untuk membuka file ini</string>
+    <string name="fm_installing_split">Memasang paket split APK…</string>
+    <string name="fm_install_failed_format">Gagal memasang: %1$s</string>
+    <string name="fm_install_conflict_title">Warning</string>
+    <string name="fm_install_conflict_detail">Tanda tangan "%1$s" tidak konsisten dengan aplikasi yang terpasang. Uninstall versi lama dulu, lalu pasang yang ini?</string>
+    <string name="fm_install_conflict_direct">Pasang Langsung</string>
+    <string name="fm_install_conflict_uninstall">Uninstall &amp; Pasang</string>
+    <string name="installer_success">Berhasil dipasang</string>
+    <string name="installer_failed_format">Gagal memasang: %1$s</string>
+
+    <!-- NPatch Engine Console -->
+    <string name="patch_console_title">NPatch Engine</string>
+    <string name="patch_console_subtitle">Patch &amp; Build Console</string>
+    <string name="patch_console_status_running">BERJALAN</string>
+    <string name="patch_console_status_done">SELESAI</string>
+    <string name="patch_console_status_failed">GAGAL</string>
+    <string name="patch_console_return">KEMBALI</string>
+    <string name="patch_console_install">PASANG</string>
+    <string name="patch_console_chevron_collapse">⌄</string>
+    <string name="patch_console_chevron_expand">⌃</string>
+    <string name="patch_console_log_start_format">[%1$d/%2$d] ▸ Memulai pipeline untuk %3$s</string>
+    <string name="patch_console_log_unzip">  ├─ Membongkar wadah APK…</string>
+    <string name="patch_console_log_merge_split">  ├─ Menggabungkan native lib ABI yang cocok dari split set…</string>
+    <string name="patch_console_log_strip_sig">  ├─ Menghapus blok tanda tangan asli…</string>
+    <string name="patch_console_log_signature_format">  ├─ 🔏 Signer asli (SHA-256): %1$s</string>
+    <string name="patch_console_log_signature_missing">  ├─ ⚠ Signature asli tidak ditemukan di APK sumber</string>
+    <string name="patch_console_log_inject_loader">  ├─ Menyuntikkan stub loader NPatch…</string>
+    <string name="patch_console_log_inject_native">  ├─ Memasang native hook library (arm64/x86_64)…</string>
+    <string name="patch_console_log_inject_meta">  ├─ Menautkan metaloader dex…</string>
+    <string name="patch_console_log_inject_module_format">  ├─ Menyematkan modul Xposed: %1$s</string>
+    <string name="patch_console_log_write_config">  ├─ Menulis konfigurasi engine (bypass Lv%1$d)…</string>
+    <string name="patch_console_log_manifest">  ├─ Menambal AndroidManifest.xml…</string>
+    <string name="patch_console_log_repack">  ├─ Mengemas ulang &amp; align arsip…</string>
+    <string name="patch_console_log_sign">  ├─ Menandatangani dengan AndroidKeyStore…</string>
+    <string name="patch_console_log_done_format">  └─ ✔ Build selesai → %1$s</string>
+    <string name="patch_console_log_saved_location_format">        📁 Disimpan di: %1$s</string>
+    <string name="patch_console_log_failed_format">  └─ ✘ Gagal: %1$s</string>
+    <string name="patch_console_log_all_done_format">\n◆ Pipeline selesai — %1$d berhasil, %2$d gagal.</string>
+    <string name="patch_console_log_conflict_check">Memindai konflik dengan aplikasi terpasang…</string>
+    <string name="patch_console_log_conflict_found_format">⚠ Bentrok signature dengan package terpasang: %1$s</string>
+    <string name="patch_console_log_uninstalling">Meminta uninstall versi lama…</string>
+    <string name="patch_console_log_installing">Membuka installer sistem…</string>
+
+    <!-- Notifikasi hasil patch -->
+    <string name="xpatch_notif_channel_name">Xpatch Engine</string>
+    <string name="xpatch_notif_channel_desc">Notifikasi hasil proses patch APK</string>
+    <string name="xpatch_notif_title_success">Patch berhasil</string>
+    <string name="xpatch_notif_text_success_format">%1$d APK berhasil dipatch, siap dipasang.</string>
+    <string name="xpatch_notif_title_partial">Patch selesai sebagian</string>
+    <string name="xpatch_notif_text_partial_format">%1$d berhasil, %2$d gagal.</string>
+    <string name="xpatch_notif_title_failed">Patch gagal</string>
+    <string name="xpatch_notif_text_failed">Semua target gagal dipatch. Buka aplikasi untuk lihat detailnya.</string>
+    <string name="fm_move">PINDAH</string>
+    <string name="fm_copy">SALIN</string>
+    <string name="fm_paste_move_here">PINDAHKAN KE SINI</string>
+    <string name="fm_paste_copy_here">SALIN KE SINI</string>
+    <string name="fm_paste_here">TEMPEL DI SINI</string>
+    <string name="fm_sort_name_asc">Nama (A-Z)</string>
+    <string name="fm_sort_name_desc">Nama (Z-A)</string>
+    <string name="fm_sort_newest">Terbaru</string>
+    <string name="fm_sort_oldest">Terlama</string>
+    <string name="fm_sort_largest">Ukuran terbesar</string>
+    <string name="fm_sort_smallest">Ukuran terkecil</string>
+    <string name="fm_all_files">Semua File</string>
+    <string name="fm_storage_info">%1$.1f / %2$.1f GB</string>
+    <string name="fm_items_count">%1$d item</string>
+    <string name="fm_rename">GANTI NAMA</string>
+    <string name="fm_rename_title">Ganti Nama</string>
+    <string name="fm_rename_failed">Gagal mengganti nama, mungkin nama sudah dipakai</string>
+    <string name="fm_select_all">Pilih semua</string>
+    <string name="fm_file_info">Info</string>
+    <string name="fm_file_info_title">Info File</string>
+    <string name="fm_share">BAGIKAN</string>
+
+    <!-- Dev Converter -->
+    <string name="conv_title">C++ Converter Studio</string>
+    <string name="conv_subtitle">Konversi berkas ke header array C++ atau Base64</string>
+    <string name="conv_tap_to_select">Pilih Berkas Input</string>
+    <string name="conv_supports_any">Mendukung .so, .apk, .zip, media &amp; dokumen</string>
+    <string name="conv_format_title">Format Output</string>
+    <string name="conv_format_hex">Hex Byte Array (.h)\nunsigned char arr[] = { 0x00... }</string>
+    <string name="conv_format_base64_header">Base64 C++ String (.h)\nconst char* arr = \"base64...\"</string>
+    <string name="conv_format_base64_text">Raw Base64 Text (.txt)\nBerkas teks Base64 polos</string>
+    <string name="conv_array_name_hint">Nama Variabel C++</string>
+    <string name="conv_array_name_hint_zip">Nama Prefix (isi ZIP)</string>
+    <string name="conv_file_info">%1$d KB • file .%2$s</string>
+    <string name="conv_file_info_large">%1$d KB • .%2$s • File besar</string>
+    <string name="conv_file_info_zip">%1$d KB • %2$d file di dalam ZIP</string>
+    <string name="conv_button_start">MULAI KONVERSI</string>
+    <string name="conv_running_background">Konversi sedang berjalan di latar belakang…</string>
+
+    <!-- Validasi & error -->
+    <string name="conv_error_no_file">Pilih file dulu!</string>
+    <string name="conv_error_unsupported_title">File Tidak Didukung</string>
+    <string name="conv_error_unsupported_message">"File \".%1$s\" belum didukung.\n\nDidukung: .so, .apk, .zip, gambar, audio, video, font, dan format data/teks umum."</string>
+    <string name="conv_error_empty_file">File ini kosong (0 KB) dan tidak bisa dikonversi.</string>
+    <string name="conv_error_read_failed">Gagal membaca file yang dipilih.</string>
+    <string name="conv_error_zip_base64text">Mode \"Raw Base64 Text\" tidak didukung untuk file ZIP (banyak file). Pilih \"Hex Byte Array\" atau \"Base64 C++ String\".</string>
+    <string name="conv_error_storage_permission">Mohon berikan izin \'All Files Access\' untuk menyimpan hasil.</string>
+    <string name="conv_error_generic_title">Konversi Gagal</string>
+    <string name="conv_error_create_folder">Gagal membuat folder output. Cek izin penyimpanan.</string>
+
+    <!-- Konfirmasi file besar -->
+    <string name="conv_large_file_title">Terdeteksi File Besar</string>
+    <string name="conv_large_file_message">File ini berukuran %1$d MB. Proses konversi mungkin butuh waktu dan akan tetap berjalan di latar belakang dengan notifikasi. Lanjutkan?</string>
+    <string name="conv_large_file_continue">Lanjutkan</string>
+    <string name="conv_large_file_cancel">Batal</string>
+
+    <!-- Notifikasi -->
+    <string name="conv_notif_channel_name">Konversi File</string>
+    <string name="conv_notif_channel_desc">Menampilkan progres saat mengonversi file di Converter</string>
+    <string name="conv_notif_title_progress">Mengonversi file…</string>
+    <string name="conv_notif_text_progress">%1$s — %2$d%%</string>
+    <string name="conv_notif_title_done">Konversi Selesai</string>
+    <string name="conv_notif_text_done">%1$s tersimpan di MonToolKit/Converter</string>
+    <string name="conv_notif_title_error">Konversi Gagal</string>
+
+    <!-- Dialog sukses -->
+    <string name="conv_done_title">Konversi Selesai 🎉</string>
+    <string name="conv_done_body">File berhasil dibuat:\n%1$s\n\nLokasi:\nInternal Storage/MonToolKit/Converter/\n\nCara pakai di C++:\n\n%2$s</string>
+    <string name="conv_done_ok">Mengerti</string>
+    <string name="conv_usage_zip">#include \"%1$s\"\n\n// Cari file berdasarkan nama aslinya di dalam zip:\nfor (unsigned int i = 0; i &lt; embeddedAssetsCount; i++) {\n    auto&amp; a = embeddedAssets[i];\n    // a.filename, a.data, a.length\n}</string>
+    <string name="conv_usage_hex">#include \"%1$s\"\n\nconst unsigned char* data = %2$s;\nunsigned int len = %2$s_len;</string>
+    <string name="conv_usage_base64_header">#include \"%1$s\"\n\nconst char* b64 = %2$s;\n// decode dulu pakai base64 decoder pilihanmu</string>
+    <string name="conv_usage_base64_text">Buka %1$s — isinya teks base64 polos.\nCopy-paste ke tempat yang kamu butuhkan.</string>
+
+    <!-- Native Tools hub -->
+    <string name="native_tools_title">Native Library Tools</string>
+    <string name="native_tools_home_subtitle">.so Inspector &amp; Crash Analyzer</string>
+    <string name="native_tools_subtitle">Alat diagnostik buat developer NDK/C++ — cek isi file .so dan baca log crash native.</string>
+
+    <!-- So Inspector -->
+    <string name="so_inspector_title">.so Inspector</string>
+    <string name="so_inspector_subtitle">Arsitektur, simbol, dependency</string>
+    <string name="inspector_tap_to_select">Tap untuk Pilih File .so</string>
+    <string name="inspector_supports_so">Baca ELF header, symbol table, dan dependency</string>
+    <string name="inspector_error_read">Gagal membaca file yang dipilih.</string>
+    <string name="inspector_error_invalid">File ini bukan ELF (.so) yang valid.</string>
+    <string name="inspector_arch_label">Arsitektur: %1$s · %2$s</string>
+    <string name="inspector_stripped_yes">Debug symbol: Stripped (tidak ada .symtab)</string>
+    <string name="inspector_stripped_no">Debug symbol: Ada (belum di-strip)</string>
+    <string name="inspector_entry_point">Entry point: %1$s</string>
+    <string name="inspector_file_size">Ukuran file: %1$d KB</string>
+    <string name="inspector_needed_libs_title">Library yang Dibutuhkan (DT_NEEDED)</string>
+    <string name="inspector_no_deps">Tidak ada dependency eksternal</string>
+    <string name="inspector_export_button">Export Simbol ke File (.txt)</string>
+    <string name="inspector_export_done_title">Export Selesai</string>
+    <string name="inspector_export_done_message">Tersimpan di:\n%1$s</string>
+    <string name="inspector_export_share">Bagikan</string>
+    <string name="inspector_export_failed">Gagal export file.</string>
+    <string name="inspector_strip_button">Strip Simbol (.so)</string>
+    <string name="inspector_stripping_title">Stripping</string>
+    <string name="inspector_stripping_message">Menghapus debug symbol…</string>
+    <string name="inspector_strip_done_title">Strip Selesai</string>
+    <string name="inspector_strip_done_message">Tersimpan di:\n%1$s\n\nAsli: %2$s\nHasil strip: %3$s (hemat %4$s)\n\nSection yang dihapus:\n%5$s</string>
+    <string name="inspector_strip_failed">Strip gagal: %1$s</string>
+    <string name="inspector_exported_header">Fungsi Exported (%1$d)</string>
+    <string name="inspector_imported_header">Fungsi Imported (%1$d)</string>
+    <string name="inspector_exported_header_capped">Fungsi Exported (nampilin %2$,d dari %1$,d)</string>
+    <string name="inspector_imported_header_capped">Fungsi Imported (nampilin %2$,d dari %1$,d)</string>
+    <string name="inspector_imported_meta">simbol eksternal — di-resolve saat load oleh .so lain</string>
+    <string name="inspector_parsing">Parsing ELF… bisa agak lama untuk file besar</string>
+    <string name="inspector_error_oom">File terlalu besar buat di-parse di device ini (memori habis). Coba device dengan RAM lebih besar atau file yang lebih kecil.</string>
+    <string name="inspector_large_file_title">File Besar</string>
+    <string name="inspector_large_file_message">File ini sekitar %1$d MB. Proses parsing bisa lumayan lama dan makan memori. Lanjutkan?</string>
+    <string name="inspector_build_id">Build ID: %1$s</string>
+    <string name="inspector_no_build_id">tidak ada</string>
+    <string name="inspector_state_lost">App sempat di-restart Android pas lagi diproses di background, jadi hasilnya ikut hilang. Coba pilih ulang filenya ya.</string>
+    <string name="inspector_background_toast">Jalan di background — boleh pindah app, nanti ada notifikasi kalau sudah selesai.</string>
+    <string name="inspector_background_hint">Diproses di background… kamu boleh pindah ke app lain, nanti ada notifikasi kalau sudah selesai.</string>
+    <string name="inspect_notif_channel_name">Inspeksi Library</string>
+    <string name="inspect_notif_channel_desc">Progres analisis file .so</string>
+    <string name="inspect_notif_title_progress">Menganalisis library</string>
+    <string name="inspect_notif_text_progress">Membaca %1$s…</string>
+    <string name="inspect_notif_title_done">Analisis selesai</string>
+    <string name="inspect_notif_text_done">%1$s sudah siap — tap untuk lihat</string>
+    <string name="inspect_notif_title_error">Analisis gagal</string>
+
+    <!-- Crash Analyzer -->
+    <string name="crash_analyzer_title">Crash Analyzer</string>
+    <string name="crash_analyzer_subtitle">Resolve alamat pc native jadi nama fungsi</string>
+    <string name="crash_howto_title">Cara pakai</string>
+    <string name="crash_howto_body">1. Paste log crash native, atau tap \"Upload File Log / Tombstone\" buat file panjang (ribuan baris).\n2. Opsional: upload .so yang sama (belum di-strip) — Build ID-nya otomatis dicek ke log biar hasilnya gak menyesatkan kalau ternyata beda versi.\n3. Tap ANALISIS.</string>
+    <string name="crash_log_hint">Paste log crash native di sini</string>
+    <string name="crash_pick_so_optional">Tap untuk lampirkan .so yang cocok (opsional, hasil lebih akurat)</string>
+    <string name="crash_analyze_button">ANALISIS</string>
+    <string name="crash_error_empty">Paste log crash dulu ya.</string>
+    <string name="crash_error_no_frames">Tidak ditemukan baris backtrace native (format yang diharapkan: \"#01 pc &lt;offset&gt; libname.so\").</string>
+    <string name="crash_no_so_uploaded">Belum ada .so di-upload — cuma tampilkan offset mentah</string>
+    <string name="crash_wrong_library">.so yang di-upload bukan %1$s</string>
+    <string name="crash_stripped_no_symbols">Symbol table tidak ada (file sudah stripped)</string>
+    <string name="crash_no_match">Tidak ada simbol yang cocok di offset ini</string>
+    <string name="crash_result_header">Frame Ter-resolve (%1$d)</string>
+    <string name="crash_upload_log_file">Upload File Log / Tombstone</string>
+    <string name="crash_error_file_read">Gagal membaca file yang dipilih sebagai teks.</string>
+    <string name="crash_lines_loaded">%1$,d baris dimuat</string>
+    <string name="crash_build_id_mismatch">Build ID beda — .so ini versi yang berbeda</string>
+    <string name="fm_shizuku_menu_item">Status Akses Shizuku</string>
+    <string name="fm_shizuku_title">Shizuku</string>
+    <string name="fm_shizuku_not_installed">App Shizuku belum terpasang/aktif. Install dulu, lalu aktifkan lewat Wireless Debugging atau ADB.</string>
+    <string name="fm_shizuku_open_page">Buka Panduan</string>
+    <string name="fm_shizuku_no_browser">Tidak ada browser terpasang</string>
+    <string name="fm_shizuku_need_permission">Shizuku aktif tapi izin belum diberikan ke aplikasi ini.</string>
+    <string name="fm_shizuku_request">Minta Izin</string>
+    <string name="fm_shizuku_active">Shizuku aktif dan izin sudah diberikan. Akses ke Android/data dan Android/obb siap dipakai.</string>
+    <string name="fm_shizuku_granted">Izin Shizuku diberikan</string>
+    <string name="fm_shizuku_denied">Izin Shizuku ditolak</string>
+    <string name="fm_shizuku_op_blocked">Aksi ini butuh akses ke folder Android/data yang terproteksi sistem.</string>
+    <string name="mlbb_shizuku_offer_install">Fitur ini butuh akses ke folder Android/data. Aktifkan Shizuku sekali biar proses backup/restore jalan otomatis ke depannya, atau pilih folder-nya manual sekarang saja.</string>
+    <string name="mlbb_shizuku_offer_permission">Shizuku sudah aktif tapi izin ke aplikasi ini belum diberikan. Kasih izin sekarang biar otomatis, atau pilih folder manual.</string>
+    <string name="mlbb_pick_folder_manual">Pilih Folder Manual</string>
+
+    <!-- ===== Ditambahkan otomatis: SO Inspector / Dev Converter / Security Info ===== -->
+    <string name="conv_error_insufficient_space">Konversi ini butuh sekitar %1$d MB ruang kosong, tapi cuma tersedia %2$d MB. Kosongkan storage atau ganti ke format Base64 (hasilnya jauh lebih kecil) lalu coba lagi.</string>
+    <string name="conv_suggest_base64">Tips: Hex Byte Array bisa ~7x lebih besar dari file aslinya. Untuk file besar, Base64 C++ String ~5x lebih kecil dan jauh lebih cepat.</string>
+
+    <!-- Opsi Encrypt Dulu (SoEncryptor, khusus file .so) -->
+    <string name="conv_encrypt_first_title">Enkripsi dulu sebelum convert (AES-256)</string>
+    <string name="conv_encrypt_first_hint">File .so dienkripsi dulu, lalu hasilnya berupa protected_lib_data.h + protected_lib_key.h — tinggal drop ke folder jni/ loader kamu. Format dan nama array otomatis dikunci selama opsi ini aktif.</string>
+    <string name="conv_encrypt_first_error">Gagal mengenkripsi file .so: %1$s</string>
+    <string name="conv_done_title_encrypt">Enkripsi + Konversi Selesai 🔒</string>
+    <string name="conv_done_body_encrypt">2 file berhasil dibuat di MonToolKit/Converter:\n• protected_lib_data.h\n• protected_lib_key.h\n\nCopy keduanya ke folder jni/ loader kamu, timpa file placeholder yang sudah ada. Tinggal build — gak perlu ubah kode apapun di sisi loader.</string>
+
+    <string name="conv_encrypt_section_title">Enkripsi (khusus .so)</string>
+    <string name="conv_encrypt_section_subtitle">Pilih mode di bawah — cuma berlaku kalau kamu pilih file .so.</string>
+    <string name="conv_encrypt_mode_off">Off — convert biasa</string>
+    <string name="conv_encrypt_mode_then_convert">Enkripsi, lalu convert ke header (.h)</string>
+    <string name="conv_encrypt_mode_only">Enkripsi .so saja (.enc, tanpa header)</string>
+    <string name="conv_encrypt_only_hint">Hasilnya file .enc polos (AES-256-CTR) plus keyinfo.txt berisi key Base64. Gak ada convert ke array/header di mode ini.</string>
+    <string name="conv_encrypt_only_error">Gagal mengenkripsi file .so: %1$s</string>
+    <string name="conv_encrypt_verify_failed">Verifikasi enkripsi gagal — hasil decrypt gak identik byte-per-byte sama file aslinya. Gak ada file yang ditulis, coba ulangi lagi. Kalau terus kejadian, cek sisa storage &amp; RAM di device kamu.</string>
+    <string name="conv_encrypt_needs_so">Mode enkripsi ini butuh file .so. Pilih file .so dulu, atau ganti mode enkripsi ke \"Off\".</string>
+    <string name="conv_done_title_encrypt_only">Enkripsi Selesai 🔒</string>
+    <string name="conv_done_body_encrypt_only">2 file berhasil dibuat di MonToolKit/Converter:\n• %1$s\n• %2$s\n\nFile .enc adalah library terenkripsi (IV = 16 byte pertama). File keyinfo.txt berisi key AES-256 dalam Base64 — simpan baik-baik, tanpa itu file .enc gak bisa didekripsi lagi.</string>
+    <string name="conv_keyinfo_content">MonToolkit - Info Key SoEncryptor\n================================\nFile asli: %2$s\nFile terenkripsi: %3$s\nCipher: AES-256-CTR\nIV: 16 byte pertama dari %3$s\n\nKey AES-256 (Base64):\n%1$s\n\nSimpan file ini baik-baik dan jangan disebar. Siapapun yang punya key ini bisa dekripsi %3$s.\nTanpa key ini, %3$s gak akan bisa didekripsi lagi selamanya.\n</string>
+    <string name="inspector_security_title">Info Security / Hardening</string>
+    <string name="inspector_sha256">SHA-256: %1$s</string>
+    <string name="inspector_hardening">NX: %1$s · RELRO: %2$s · Canary: %3$s · Fortify: %4$s</string>
+    <string name="inspector_yes">Ya</string>
+    <string name="inspector_no">Tidak</string>
+    <string name="inspector_unknown">Tidak diketahui</string>
+    <string name="inspector_detail_unavailable">Detail fungsi tidak tersedia — coba inspect ulang file-nya.</string>    
+    <!-- Export Options -->
+    <string name="inspector_export_options_message">Apakah kamu ingin menyertakan Hex Dump untuk setiap fungsi?\n\nCatatan: Menyertakan Hex Dump untuk file besar (misal Unity IL2CPP) bisa sangat lama dan ukuran file hasilnya sangat besar.</string>
+    <string name="inspector_export_include_hex">Sertakan Hex</string>
+    <string name="inspector_export_no_hex">Tanpa Hex (Cepat)</string>
+    <string name="inspector_exporting_title">Mengekspor</string>
+    <string name="inspector_exporting_message">Mohon tunggu, sedang membuat file export...</string>
+    <string name="inspector_strings_button">Extract Strings</string>
+    <string name="inspector_extracting_title">Mengekstrak Strings</string>
+    <string name="inspector_extracting_message">Memindai file untuk mencari teks rahasia (API Key, URL). Mohon tunggu...</string>
+
+    <!-- ===== HTML Runner: aksi umum ===== -->
+    <string name="action_cancel">Batal</string>
+    <string name="action_delete">Hapus</string>
+    <string name="action_delete_all">Hapus Semua</string>
+    <string name="action_close">Tutup</string>
+    <string name="action_open_file_short">File</string>
+    <string name="action_open_folder_short">Folder</string>
+
+    <!-- ===== HTML Runner: tombol header ===== -->
+    <string name="desc_history_button">Riwayat Jalankan</string>
+    <string name="desc_recent_files_button">File Terakhir</string>
+    <string name="desc_save_export_button">Simpan / Export</string>
+
+    <!-- ===== HTML Runner: dialog Riwayat Jalankan (hanya kode yang diketik/tempel manual lalu di-RUN) ===== -->
+    <string name="history_dialog_title">Riwayat Jalankan</string>
+    <string name="history_dialog_subtitle">Cuma menyimpan kode yang kamu ketik/tempel manual lalu di-RUN — file/folder yang dibuka tidak termasuk di sini. Tap salah satu untuk buka lagi.</string>
+    <string name="history_empty_state">Belum ada riwayat.\nKetik atau tempel kode HTML lalu tekan RUN.</string>
+    <string name="source_label_manual">Diketik / ditempel manual</string>
+    <string name="confirm_delete_history_title">Hapus riwayat ini?</string>
+    <string name="confirm_delete_all_history_title">Hapus semua riwayat jalankan?</string>
+    <string name="confirm_delete_all_history_message">Semua snapshot kode yang pernah dijalankan akan dihapus permanen dari perangkat ini.</string>
+
+    <!-- ===== HTML Runner: dialog File Terakhir (file/folder yang pernah dibuka) ===== -->
+    <string name="recent_files_dialog_title">File Terakhir</string>
+    <string name="recent_files_dialog_subtitle">File dan folder yang pernah kamu buka. Tap salah satu untuk buka lagi.</string>
+    <string name="recent_files_empty_state">Belum ada file yang dibuka.\nPakai \"File\" atau \"Folder\" di atas untuk buka HTML.</string>
+    <string name="recent_file_type_file">File</string>
+    <string name="recent_file_type_folder">Folder</string>
+    <string name="confirm_delete_recent_title">Hapus dari File Terakhir?</string>
+    <string name="confirm_delete_all_recent_title">Bersihkan File Terakhir?</string>
+    <string name="confirm_delete_all_recent_message">Ini cuma menghapus daftarnya — file aslinya di perangkat kamu tidak ikut terhapus.</string>
+
+    <!-- ===== HTML Runner: status / error / toast ===== -->
+    <string name="toast_saved">Tersimpan.</string>
+    <string name="status_scanning_folder">Memindai folder…</string>
+    <string name="dialog_pick_html_file_title">Pilih file HTML</string>
+    <string name="error_save_file_failed">Gagal menyimpan file: %1$s</string>
+    <string name="error_open_file_failed">Gagal membuka file: %1$s</string>
+    <string name="error_open_folder_failed">Tidak bisa membuka folder ini.</string>
+    <string name="error_no_html_in_folder">Tidak ada file .html ditemukan di folder ini.</string>
+    <string name="error_read_file_failed">Gagal membaca %1$s: %2$s</string>
+    <string name="error_load_page_failed">Gagal memuat halaman: %1$s</string>
+    <string name="active_source_file_format">File: %1$s  (tanpa CSS/JS terpisah — pakai \"Folder\" kalau project kamu punya file terpisah)</string>
+    <string name="active_source_folder_format">Folder: %1$s → %2$s</string>
+    <string name="active_source_history_format">Riwayat: %1$s</string>
+    <string name="status_running_console">"> Menjalankan…\n"</string>
+    <string name="status_console_cleared">"> Console dibersihkan.\n"</string>
+    <string name="title_untitled_html">HTML Tanpa Judul</string>
+
+    <!-- Xpatch / LSPatch Studio -->
+    <string name="xpatch_title">LSPosed Studio</string>
+    <string name="xpatch_subtitle">Modifikasi APK agar bisa memuat modul Xposed tanpa root.</string>
+    <string name="xpatch_select_target">Pilih Aplikasi Target</string>
+    <string name="xpatch_target_hint">Ketuk untuk menambah — pilih beberapa aplikasi sekaligus untuk patch batch</string>
+    <string name="xpatch_select_module">Pilih Modul Xposed (Opsional)</string>
+    <string name="xpatch_module_hint">Ketuk untuk menambah — pilih beberapa modul untuk digabung sekaligus</string>
+    <string name="xpatch_configuration">Konfigurasi Patcher</string>
+    <string name="xpatch_bypass_level">Level Bypass Signature</string>
+    <string name="xpatch_bypass_lv0">Lv0: Nonaktif</string>
+    <string name="xpatch_bypass_lv1">Lv1: Hook PackageManager (Java)</string>
+    <string name="xpatch_bypass_lv2">Lv2: Hook openat (libc.so) - Sangat Disarankan</string>
+    <string name="xpatch_bypass_lv3">Lv3: IO Redirection (deep Context spoofing)</string>
+    <string name="xpatch_bypass_lv4">Lv4: SVC/Seccomp Hook (kernel-level, ARM64 only)</string>
+    <string name="xpatch_version_override">Override Versi (Opsional)</string>
+    <string name="xpatch_modifying">Memodifikasi APK...</string>
+    <string name="xpatch_build_button">BUAT APK HASIL MODIFIKASI</string>
+    <string name="xpatch_processing_button">MEMPROSES…</string>
+    <string name="xpatch_checking_conflicts_button">MEMERIKSA…</string>
+    <string name="xpatch_error_no_target">Pilih minimal satu aplikasi target!</string>
+    <string name="xpatch_error_storage_permission">Berikan izin \'Akses Semua File\' untuk menyimpan APK.</string>
+    <string name="xpatch_conflicts_title">Potensi Konflik Terdeteksi</string>
+    <string name="xpatch_continue_anyway">Tetap Lanjutkan</string>
+    <string name="xpatch_cancel">Batal</string>
+    <string name="xpatch_target_selection_title">Pilih Target (Batch)</string>
+    <string name="xpatch_module_selection_title">Pilih Modul (Multi-embed)</string>
+    <string name="xpatch_choose_installed_apps">Pilih Aplikasi Terinstal</string>
+    <string name="xpatch_choose_apk_files">Pilih Berkas APK</string>
+    <string name="xpatch_selected_count_format">%1$d dipilih</string>
+    <string name="xpatch_batch_progress_format">Aplikasi %1$d/%2$d (%3$s): %4$d%%</string>
+    <string name="xpatch_targets_selected_format">%1$d aplikasi dipilih (mode batch): %2$s</string>
+    <string name="xpatch_more_suffix_format">, +%1$d lainnya</string>
+    <string name="xpatch_mode_hint_none">Mode Embed </string>
+    <string name="xpatch_mode_hint_single">Mode Embed Aktif (Terintegrasi)</string>
+    <string name="xpatch_modules_selected_format">%1$d modul dipilih: %2$s</string>
+    <string name="xpatch_mode_hint_multi_format">Mode Multi-Embed Aktif (%1$d modul)</string>
+    <string name="xpatch_result_success_header_format">Berhasil (%1$d):\n</string>
+    <string name="xpatch_result_failure_header_format">\nGagal (%1$d):\n</string>
+    <string name="xpatch_batch_complete_title">Batch Patching Selesai</string>
+    <string name="xpatch_result_title">Hasil Patching</string>
+    <string name="xpatch_ok">OK</string>
+    <string name="xpatch_auto_install">Instal Otomatis</string>
+    <string name="xpatch_installing_via_shizuku">Menginstal APK via Shizuku...</string>
+    <string name="xpatch_shizuku_install_failed_format">Instal via Shizuku gagal: %1$s</string>
+    <string name="xpatch_added">DITAMBAHKAN</string>
+    <string name="xpatch_select_item">PILIH</string>
+    <!-- Xpatch Conflict Warnings -->
+    <string name="xpatch_warning_factory_title">App sudah punya appComponentFactory sendiri</string>
+    <string name="xpatch_warning_factory_detail">Nilai asli: \"%1$s\". Ini akan ditimpa jadi stub LSPatch. Kalau factory asli ini penting buat app (jarang, tapi ada), app bisa force-close.</string>
+    <string name="xpatch_warning_already_patched_title">APK ini sepertinya sudah pernah di-patch</string>
+    <string name="xpatch_warning_already_patched_detail">Ditemukan assets/lspatch/config.json di dalam APK sumber. Nge-patch APK yang sudah di-patch biasanya menghasilkan app yang gagal jalan (nested patch).</string>
+    <string name="xpatch_warning_integrity_title">Kemungkinan pakai Play Integrity / SafetyNet</string>
+    <string name="xpatch_warning_integrity_detail">App ini mendeklarasikan fitur yang terkait pengecekan integritas perangkat. Kalau app ini aktif memverifikasi tanda tangan/keaslian APK ke server, patch bisa terdeteksi meski sig-bypass aktif.</string>
+    <string name="xpatch_warning_minsdk_title">minSdkVersion app ini rendah (%1$d)</string>
+    <string name="xpatch_warning_minsdk_detail">Native loader NPatch dirancang utk Android 7+ (API 24+) untuk Lv0-2. Bypass Lv3/Lv4 membutuhkan Android 9+ (API 28+). Mungkin tetap jalan di bawah itu, tapi tidak dijamin.</string>
+    
+    <!-- Xpatch Advanced Features -->
+    <string name="xpatch_advanced_features">Fitur Lanjutan (Opsional)</string>
+    <string name="xpatch_switch_microg">Dukungan MicroG (Tanpa Google Play)</string>
+    <string name="xpatch_switch_inject_provider">Inject ContentProvider</string>
+    <string name="xpatch_invalid_apk_format">File bukan APK yang valid, dilewati: %1$s</string>
+    <string name="xpatch_module_not_confirmed">Belum terdeteksi sebagai modul Xposed (tetap ditambahkan): %1$s</string>
+    
+    <!-- Xpatch Anti-Debug & Experimental -->
+    <string name="xpatch_switch_antidebug">Anti-Debug Protection (ptrace / TracerPid)</string>
+    <string name="xpatch_experimental_title">⚠️Eksperimental</string>
+    <string name="xpatch_experimental_warning">Fitur eksperimental dapat menyebabkan crash atau ketidakstabilan di beberapa perangkat. Aktifkan hanya untuk pengujian.</string>
+    <string name="xpatch_switch_hide_dl_iterate">bypass dl_iterate_phdr</string>
+    <string name="xpatch_switch_trap_prctl">bypass prctl</string>
+    <string name="xpatch_switch_normalize_timing">Normalisasi timing</string>
+    
+    <!-- Experimental toggle hints -->
+    <string name="xpatch_trap_prctl_hint">⛔ Dinonaktifkan: bentrok dengan Seccomp Level 4</string>
+    <string name="xpatch_normalize_timing_hint">⚠️ Risiko: dapat menyebabkan lag/crash di beberapa game</string>
+    
+    <!-- ===== NEW STRINGS FOR HARDCODED TEXT ===== -->
+<string name="splash_subtitle">Utilitas serba guna</string>
+<string name="progress_title">Mengonversi…</string>
+<string name="progress_message">Memproses file ke dalam kode C++.\nMohon tunggu, jangan tutup aplikasi.</string>
+<string name="search_hint">Cari nama aplikasi atau paket</string>
+<string name="dns_public_providers">Penyedia Publik</string>
+<string name="tab_code">Kode</string>
+<string name="tab_preview">Pratinjau</string>
+<string name="tab_console">Konsol</string>
+<string name="console_output_label">Keluaran konsol JavaScript</string>
+<string name="console_copy">Salin Log</string>
+<string name="console_clear">Bersihkan</string>
+<string name="console_initial_text">> Tekan RUN untuk melihat keluaran konsol di sini.\n</string>
+<string name="lua_encryptor_title">Lua Encryptor</string>
+<string name="lua_encryptor_subtitle">Lindungi skrip GameGuardian dari dekompilasi atau pencurian.</string>
+<string name="lua_protection_options">Opsi Perlindungan</string>
+<string name="mlbb_title">Mole delete guest</string>
+<string name="mlbb_subtitle">Reset akun guest dengan aman tanpa root (hanya berfungsi di beberapa perangkat).</string>
+<string name="mlbb_progress_steps">Langkah (ikuti urutan)</string>
+<string name="ping_title">Network Ping Tester</string>
+<string name="ping_subtitle">Cek latensi ke server atau alamat IP.</string>
+<string name="device_spoof_title">Device / GPU Spoof</string>
+<string name="device_spoof_subtitle">Profile Model &amp; GPU</string>
+<string name="device_spoof_desc">Spoof profil flagship untuk membuka grafik tinggi di game</string>
+<string name="device_spoof_off">Tidak Aktif</string>
+
+</resources>

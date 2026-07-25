@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="176dp"
+    android:background="@drawable/bg_nav_header_elegant"
+    android:theme="@style/ThemeOverlay.Material3.Dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:paddingStart="22dp"
+        android:paddingEnd="22dp"
+        android:paddingBottom="22dp"
+        android:paddingTop="22dp">
+
+        <FrameLayout
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/bg_header_icon_chip">
+
+            <ImageView
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_launcher"
+                android:contentDescription="@string/app_name" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="21sp"
+            android:fontFamily="@font/font_inter_bold"
+            android:letterSpacing="-0.02"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@string/nav_header_subtitle"
+            android:textSize="12sp"
+            android:fontFamily="@font/font_inter_regular"
+            android:textColor="#A8B3C7" />
+    </LinearLayout>
+
+</FrameLayout>
